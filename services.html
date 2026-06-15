@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<style>
+.faq-item {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 0;
+}
+.faq-item summary {
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--pine, #1a5c3a);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  color: var(--flame, #e05a2b);
+  transition: transform .3s;
+}
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+.faq-item p {
+  margin-top: 14px;
+  color: var(--mut, #666);
+  line-height: 1.7;
+}
+</style>
+<body>
+<div class="preloader"><div class="pre-ring"></div></div>
+<div class="cursor-glow"></div>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-ghost">Login</a>
+      <a href="contact.html" class="btn btn-solar">Get a Quote ⚡</a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Our Services</span>
+    <h1 data-split>Energy Solutions, End to End</h1>
+    <div class="crumb"><a href="index.html">Home</a> / Services</div>
+  </div>
+</section>
+
+<!-- Detailed services -->
+<section>
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Full Portfolio</span>
+      <h2 data-split>Six Services. One Accountable Partner.</h2>
+      <p>Every service below includes design, permits, installation, commissioning, and a live monitoring dashboard.</p>
+    </div>
+
+    <div class="grid-2" style="align-items:center;margin-bottom:60px">
+      <div class="media reveal"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=3840&auto=format&fit=crop" alt="Rooftop solar installation"></div>
+      <div class="reveal">
+        <span class="eyebrow">01 · Solar</span>
+        <h2 style="font-family:var(--font-d);color:var(--pine);font-size:1.8rem;margin-bottom:14px">Solar Panel Installation</h2>
+        <p style="color:var(--mut);margin-bottom:18px">Tier-1 mono-PERC and bifacial modules, string or micro-inverters, and structures rated for 160 km/h winds. Residential systems from 3 kW, commercial up to multi-megawatt rooftops and carports.</p>
+        <p style="color:var(--mut)">✔ 25-year performance warranty &nbsp; ✔ Net-metering paperwork handled &nbsp; ✔ Subsidy assistance included</p>
+        <a href="contact.html" class="btn btn-pine" style="margin-top:24px">Request Solar Quote →</a>
+      </div>
+    </div>
+
+    <div class="grid-2" style="align-items:center;margin-bottom:60px">
+      <div class="reveal">
+        <span class="eyebrow">02 · Wind</span>
+        <h2 style="font-family:var(--font-d);color:var(--pine);font-size:1.8rem;margin-bottom:14px">Wind Energy Systems</h2>
+        <p style="color:var(--mut);margin-bottom:18px">From 10 kW distributed turbines for farms to 95 MW utility clusters. We run 12-month anemometry studies before a single foundation is poured, so projected yield is yield you actually get.</p>
+        <p style="color:var(--mut)">✔ Site wind mapping &nbsp; ✔ Grid-code compliance &nbsp; ✔ 20-year O&M contracts</p>
+        <a href="contact.html" class="btn btn-pine" style="margin-top:24px">Discuss Wind Project →</a>
+      </div>
+      <div class="media reveal"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=3840&auto=format&fit=crop" alt="Wind turbines in a green field"></div>
+    </div>
+
+    <div class="grid-2" style="align-items:center">
+      <div class="media reveal"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=3840&auto=format&fit=crop" alt="Battery storage and electrical infrastructure"></div>
+      <div class="reveal">
+        <span class="eyebrow">03 · Storage</span>
+        <h2 style="font-family:var(--font-d);color:var(--pine);font-size:1.8rem;margin-bottom:14px">Battery Storage & Backup</h2>
+        <p style="color:var(--mut);margin-bottom:18px">LFP battery banks from 5 kWh home units to 60 MWh grid-scale campuses. Ride through outages, shave peak tariffs, and sell back at the most profitable hours — automatically.</p>
+        <p style="color:var(--mut)">✔ 10-year battery warranty &nbsp; ✔ Smart tariff optimisation &nbsp; ✔ Seamless outage switchover</p>
+        <a href="contact.html" class="btn btn-pine" style="margin-top:24px">Size My Battery →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Remaining services grid -->
+<section style="background:#fff;padding-top:0">
+  <div class="container">
+    <div class="grid-3">
+      <div class="card tilt reveal"><div class="icon">💧</div><h3>Hydro & Micro-Hydro</h3><p>Run-of-river plants from 25 kW to 5 MW with fish-friendly turbines and minimal civil works. Steady baseload power, day and night.</p><a class="link" href="contact.html">Enquire →</a></div>
+      <div class="card tilt reveal"><div class="icon">🚗</div><h3>EV Charging Infrastructure</h3><p>7 kW home chargers to 240 kW DC fast-charge plazas, with solar-coupled options and fleet management software.</p><a class="link" href="contact.html">Enquire →</a></div>
+      <div class="card tilt reveal"><div class="icon">📊</div><h3>Audits, O&M & Monitoring</h3><p>Thermographic drone audits, panel cleaning robots, predictive maintenance, and a 24/7 network operations centre.</p><a class="link" href="contact.html">Enquire →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Expanded Service Deep-Dives ── -->
+<section>
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Going Deeper</span>
+      <h2 data-split>Every Service, Fully Unpacked</h2>
+      <p>Not just what we install — but how we design, test, and stand behind it for the system's lifetime.</p>
+    </div>
+
+    <!-- EV Charging deep-dive -->
+    <div class="grid-2" style="align-items:center;margin-bottom:60px">
+      <div class="reveal">
+        <span class="eyebrow">04 · EV</span>
+        <h2 style="font-family:var(--font-d);color:var(--pine);font-size:1.8rem;margin-bottom:14px">EV Charging — From Home to Highway</h2>
+        <p style="color:var(--mut);margin-bottom:14px">India's EV fleet is doubling every 18 months. We future-proof your property — residential, commercial, or highway corridor — with charging infrastructure that scales with demand.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px">
+          <div class="card" style="padding:16px">
+            <div style="font-weight:700;color:var(--pine);margin-bottom:6px">🏠 Home AC</div>
+            <p style="font-size:.85rem;color:var(--mut)">7 kW smart charger, app-controlled, solar-linked. Charges overnight on off-peak tariff.</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <div style="font-weight:700;color:var(--pine);margin-bottom:6px">🏢 Commercial</div>
+            <p style="font-size:.85rem;color:var(--mut)">22–50 kW AC plazas for offices, malls, and hotels with RFID billing integration.</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <div style="font-weight:700;color:var(--pine);margin-bottom:6px">⚡ DC Fast</div>
+            <p style="font-size:.85rem;color:var(--mut)">60–240 kW CCS2/CHAdeMO chargers for fleet depots and highway stops.</p>
+          </div>
+          <div class="card" style="padding:16px">
+            <div style="font-weight:700;color:var(--pine);margin-bottom:6px">☀️ Solar-Coupled</div>
+            <p style="font-size:.85rem;color:var(--mut)">Canopy-mounted PV feeds the charger directly — near-zero grid electricity cost.</p>
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-pine">Plan My EV Infrastructure →</a>
+      </div>
+      <div class="media reveal">
+        <img src="https://solarfacts.in/wp-content/uploads/2025/10/Solar-EV-Charging-Station-Cost.jpg" alt="EV charging station">
+      </div>
+    </div>
+
+    <!-- O&M deep-dive -->
+    <div class="grid-2" style="align-items:center">
+      <div class="media reveal">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=3840&auto=format&fit=crop" alt="Drone inspecting solar panels">
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">05 · O&M</span>
+        <h2 style="font-family:var(--font-d);color:var(--pine);font-size:1.8rem;margin-bottom:14px">Operations & Maintenance That Doesn't Wait</h2>
+        <p style="color:var(--mut);margin-bottom:18px">A solar panel that's 15% dirty loses 15% of its output. A faulty inverter that's not caught in 48 hours costs weeks of generation. Our O&M programme is built on the premise that downtime is unacceptable.</p>
+        <ul style="list-style:none;padding:0;margin-bottom:24px">
+          <li style="display:flex;gap:10px;margin-bottom:12px;color:var(--mut)"><span style="color:var(--pine);font-weight:700;min-width:24px">✔</span> Thermographic drone scan every 6 months — finds hotspots invisible to the eye</li>
+          <li style="display:flex;gap:10px;margin-bottom:12px;color:var(--mut)"><span style="color:var(--pine);font-weight:700;min-width:24px">✔</span> AI-powered performance analytics — alert fires before a fault becomes a failure</li>
+          <li style="display:flex;gap:10px;margin-bottom:12px;color:var(--mut)"><span style="color:var(--pine);font-weight:700;min-width:24px">✔</span> Robotic panel cleaning for large commercial sites — no scaffolding, no water wastage</li>
+          <li style="display:flex;gap:10px;margin-bottom:12px;color:var(--mut)"><span style="color:var(--pine);font-weight:700;min-width:24px">✔</span> 24/7 NOC with &lt;4-hour field response SLA across all serviceable states</li>
+          <li style="display:flex;gap:10px;color:var(--mut)"><span style="color:var(--pine);font-weight:700;min-width:24px">✔</span> Annual yield report with insurance-grade data for asset financing</li>
+        </ul>
+        <a href="contact.html" class="btn btn-pine">Get an O&M Quote →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Sector Focus ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Who We Serve</span>
+      <h2 data-split>Every Sector Has a Different Energy Challenge. We've Solved Them All.</h2>
+    </div>
+    <div class="grid-4">
+      <div class="card tilt reveal" style="padding:28px">
+        <div class="icon">🏠</div>
+        <h3>Residential</h3>
+        <p style="color:var(--mut);margin-bottom:14px">3–20 kW rooftop systems for homes and villas. Zero-upfront financing, subsidy handled, savings visible from month one.</p>
+        <div style="font-size:.85rem;color:var(--pine);font-weight:600">Avg. bill reduction: 80–95%</div>
+      </div>
+      <div class="card tilt reveal" style="padding:28px">
+        <div class="icon">🏭</div>
+        <h3>Industrial & MSMEs</h3>
+        <p style="color:var(--mut);margin-bottom:14px">50 kW to 5 MW captive solar for factories, warehouses, and export-oriented units. Payback typically under 4 years.</p>
+        <div style="font-size:.85rem;color:var(--pine);font-weight:600">Avg. payback: 3.5 years</div>
+      </div>
+      <div class="card tilt reveal" style="padding:28px">
+        <div class="icon">🏫</div>
+        <h3>Institutions</h3>
+        <p style="color:var(--mut);margin-bottom:14px">Schools, hospitals, and government buildings — CSR-funded or RESCO models available. We handle MNRE compliance end to end.</p>
+        <div style="font-size:.85rem;color:var(--pine);font-weight:600">50+ institutions served</div>
+      </div>
+      <div class="card tilt reveal" style="padding:28px">
+        <div class="icon">🌾</div>
+        <h3>Agriculture</h3>
+        <p style="color:var(--mut);margin-bottom:14px">Solar pump sets, agri-voltaic canopies, and wind-solar hybrids for farms. PM-KUSUM subsidy fully leveraged.</p>
+        <div style="font-size:.85rem;color:var(--pine);font-weight:600">PM-KUSUM ready</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Technology Stack ── -->
+<section class="counters">
+  <div class="container">
+    <div class="sec-head center on-dark">
+      <span class="eyebrow">Our Technology</span>
+      <h2 data-split style="color:#fff">The Equipment Behind the Guarantee</h2>
+      <p style="color:rgba(255,255,255,.65);max-width:600px;margin:0 auto">We specify only equipment with a proven 10+ year track record and manufacturer support in India. No grey-market modules, no unbranded inverters.</p>
+    </div>
+    <div class="grid-4" style="margin-top:40px">
+      <div class="reveal" style="text-align:center">
+        <div class="cnt">
+          <div class="num" style="font-size:1.5rem">Mono-PERC & TOPCon</div>
+          <div class="lbl">Latest-generation solar cells at 21–23% module efficiency — more kWh per square metre of roof.</div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center">
+        <div class="cnt">
+          <div class="num" style="font-size:1.5rem">LFP Batteries</div>
+          <div class="lbl">Lithium Iron Phosphate chemistry — no thermal runaway risk, 6,000+ cycle life, Indian climate-proven.</div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center">
+        <div class="cnt">
+          <div class="num" style="font-size:1.5rem">SCADA + AI</div>
+          <div class="lbl">Our proprietary monitoring platform ingests 10-second interval data and flags anomalies before they cause downtime.</div>
+        </div>
+      </div>
+      <div class="reveal" style="text-align:center">
+        <div class="cnt">
+          <div class="num" style="font-size:1.5rem">Hot-Dip Galvanised</div>
+          <div class="lbl">All mounting structures are HDG steel, rated for coastal saline environments and cyclone-zone wind loads.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Pricing Transparency ── -->
+<section>
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Transparent Pricing</span>
+      <h2 data-split>No Surprises. Ever.</h2>
+      <p>Indicative ranges below — your fixed-price quote locks these in before we break ground.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card tilt reveal" style="padding:36px;text-align:center;border-top:4px solid var(--pine)">
+        <div style="font-size:.85rem;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Residential Solar</div>
+        <div style="font-size:2.2rem;font-family:var(--font-d);color:var(--pine);font-weight:700;margin-bottom:4px">₹55–65k</div>
+        <div style="font-size:.85rem;color:var(--mut);margin-bottom:20px">per kW installed, all-inclusive</div>
+        <ul style="list-style:none;padding:0;text-align:left;margin-bottom:24px">
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Tier-1 modules + inverter</li>
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Mounting structure & wiring</li>
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Net-meter + DISCOM filing</li>
+          <li style="padding:8px 0;font-size:.9rem;color:var(--mut)">✔ Subsidy documentation</li>
+        </ul>
+        <a href="contact.html" class="btn btn-pine" style="width:100%;text-align:center">Get Exact Quote →</a>
+      </div>
+      <div class="card tilt reveal" style="padding:36px;text-align:center;border-top:4px solid var(--flame);position:relative">
+        <div style="position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--flame);color:#fff;padding:4px 18px;border-radius:30px;font-size:.78rem;font-weight:700;white-space:nowrap">MOST POPULAR</div>
+        <div style="font-size:.85rem;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Commercial Solar</div>
+        <div style="font-size:2.2rem;font-family:var(--font-d);color:var(--flame);font-weight:700;margin-bottom:4px">₹42–52k</div>
+        <div style="font-size:.85rem;color:var(--mut);margin-bottom:20px">per kW installed (50 kW+)</div>
+        <ul style="list-style:none;padding:0;text-align:left;margin-bottom:24px">
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Everything in Residential</li>
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Shadow analysis & yield report</li>
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ SCADA monitoring dashboard</li>
+          <li style="padding:8px 0;font-size:.9rem;color:var(--mut)">✔ 1-year free O&M included</li>
+        </ul>
+        <a href="contact.html" class="btn btn-solar" style="width:100%;text-align:center">Get Exact Quote →</a>
+      </div>
+      <div class="card tilt reveal" style="padding:36px;text-align:center;border-top:4px solid var(--pine)">
+        <div style="font-size:.85rem;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Utility Scale</div>
+        <div style="font-size:2.2rem;font-family:var(--font-d);color:var(--pine);font-weight:700;margin-bottom:4px">Custom</div>
+        <div style="font-size:.85rem;color:var(--mut);margin-bottom:20px">1 MW+ — priced per project</div>
+        <ul style="list-style:none;padding:0;text-align:left;margin-bottom:24px">
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Full EPC turnkey</li>
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Land acquisition support</li>
+          <li style="padding:8px 0;border-bottom:1px solid #eee;font-size:.9rem;color:var(--mut)">✔ Power purchase agreement</li>
+          <li style="padding:8px 0;font-size:.9rem;color:var(--mut)">✔ 20-year O&M contract</li>
+        </ul>
+        <a href="contact.html" class="btn btn-pine" style="width:100%;text-align:center">Talk to Our Team →</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.88rem;margin-top:24px">All prices before applicable PM-Surya Ghar and state-level subsidies, which we deduct from your invoice automatically.</p>
+  </div>
+</section>
+
+<!-- ── NEW: Testimonials ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Client Results</span>
+      <h2 data-split>Real Numbers. Real Customers.</h2>
+    </div>
+    <div class="grid-3">
+      <div class="card tilt reveal" style="padding:30px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div>
+            <div style="font-weight:700">Kavitha Logistics Park</div>
+            <div style="font-size:.82rem;color:var(--mut)">500 kW · Madurai</div>
+          </div>
+          <div style="background:var(--pine);color:#fff;padding:6px 14px;border-radius:6px;font-weight:700;font-size:.9rem">↓ 87%</div>
+        </div>
+        <p style="font-style:italic;font-size:.92rem;color:var(--mut);margin-bottom:16px">"Our electricity bill dropped from ₹18 lakh a month to ₹2.3 lakh. Payback in 3 years 4 months — two years ahead of the guarantee."</p>
+        <div style="font-size:.82rem;color:var(--mut)">— Kavitha Murugesan, Managing Director</div>
+      </div>
+      <div class="card tilt reveal" style="padding:30px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div>
+            <div style="font-weight:700">St. Agnes Matriculation School</div>
+            <div style="font-size:.82rem;color:var(--mut)">40 kW · Salem</div>
+          </div>
+          <div style="background:var(--pine);color:#fff;padding:6px 14px;border-radius:6px;font-weight:700;font-size:.9rem">₹0 Bill</div>
+        </div>
+        <p style="font-style:italic;font-size:.92rem;color:var(--mut);margin-bottom:16px">"We export more than we consume. The school now earns a net-metering credit every month. Every paisa goes back into student welfare."</p>
+        <div style="font-size:.82rem;color:var(--mut)">— Fr. Thomas, Principal</div>
+      </div>
+      <div class="card tilt reveal" style="padding:30px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div>
+            <div style="font-weight:700">Sridhar Cold Storage</div>
+            <div style="font-size:.82rem;color:var(--mut)">200 kW + 150 kWh Storage · Trichy</div>
+          </div>
+          <div style="background:var(--flame);color:#fff;padding:6px 14px;border-radius:6px;font-weight:700;font-size:.9rem">Zero DG</div>
+        </div>
+        <p style="font-style:italic;font-size:.92rem;color:var(--mut);margin-bottom:16px">"We used to run DG sets 6 hours a day during peak load shedding. Since the battery came online, we haven't touched the diesel pump once."</p>
+        <div style="font-size:.82rem;color:var(--mut)">— Sridhar Balakrishnan, Owner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Service Comparison Table ── -->
+<section>
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Compare</span>
+      <h2 data-split>Which Package Is Right for You?</h2>
+    </div>
+    <div class="reveal" style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:.92rem">
+        <thead>
+          <tr style="background:var(--pine);color:#fff">
+            <th style="padding:16px 20px;text-align:left;border-radius:8px 0 0 0">Feature</th>
+            <th style="padding:16px 20px;text-align:center">Residential</th>
+            <th style="padding:16px 20px;text-align:center">Commercial</th>
+            <th style="padding:16px 20px;text-align:center;border-radius:0 8px 0 0">Utility Scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #eee">
+            <td style="padding:14px 20px;font-weight:600">System Size</td>
+            <td style="padding:14px 20px;text-align:center;color:var(--mut)">3–20 kW</td>
+            <td style="padding:14px 20px;text-align:center;color:var(--mut)">50 kW – 1 MW</td>
+            <td style="padding:14px 20px;text-align:center;color:var(--mut)">1 MW+</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee;background:#f9fafb">
+            <td style="padding:14px 20px;font-weight:600">Site Survey</td>
+            <td style="padding:14px 20px;text-align:center">✅ Free</td>
+            <td style="padding:14px 20px;text-align:center">✅ Free</td>
+            <td style="padding:14px 20px;text-align:center">✅ Free</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee">
+            <td style="padding:14px 20px;font-weight:600">DISCOM/Net-meter Filing</td>
+            <td style="padding:14px 20px;text-align:center">✅ Included</td>
+            <td style="padding:14px 20px;text-align:center">✅ Included</td>
+            <td style="padding:14px 20px;text-align:center">✅ Included</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee;background:#f9fafb">
+            <td style="padding:14px 20px;font-weight:600">Monitoring Dashboard</td>
+            <td style="padding:14px 20px;text-align:center">Basic (app)</td>
+            <td style="padding:14px 20px;text-align:center">Advanced SCADA</td>
+            <td style="padding:14px 20px;text-align:center">Enterprise NOC</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee">
+            <td style="padding:14px 20px;font-weight:600">O&M Included</td>
+            <td style="padding:14px 20px;text-align:center">1 year</td>
+            <td style="padding:14px 20px;text-align:center">2 years</td>
+            <td style="padding:14px 20px;text-align:center">5 years</td>
+          </tr>
+          <tr style="border-bottom:1px solid #eee;background:#f9fafb">
+            <td style="padding:14px 20px;font-weight:600">Yield Guarantee</td>
+            <td style="padding:14px 20px;text-align:center">—</td>
+            <td style="padding:14px 20px;text-align:center">✅ P90 Guaranteed</td>
+            <td style="padding:14px 20px;text-align:center">✅ P90 Guaranteed</td>
+          </tr>
+          <tr>
+            <td style="padding:14px 20px;font-weight:600">Financing Options</td>
+            <td style="padding:14px 20px;text-align:center">Loan / EMI</td>
+            <td style="padding:14px 20px;text-align:center">Loan / Lease / RESCO</td>
+            <td style="padding:14px 20px;text-align:center">PPA / JV / EPC</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="counters">
+  <div class="container">
+    <div class="sec-head center on-dark">
+      <span class="eyebrow">How It Works</span>
+      <h2 data-split style="color:#fff">From First Call to First Kilowatt</h2>
+    </div>
+    <div class="grid-4">
+      <div class="reveal" style="text-align:center"><div class="cnt"><div class="num">01</div><div class="lbl"><b style="color:#fff">Free Survey</b><br>Drone scan, shade map, and bill analysis within 48 hours.</div></div></div>
+      <div class="reveal" style="text-align:center"><div class="cnt"><div class="num">02</div><div class="lbl"><b style="color:#fff">Design & Quote</b><br>Fixed-price proposal with guaranteed yield figures.</div></div></div>
+      <div class="reveal" style="text-align:center"><div class="cnt"><div class="num">03</div><div class="lbl"><b style="color:#fff">Install & Connect</b><br>Certified crews, typically 10 working days to grid sync.</div></div></div>
+      <div class="reveal" style="text-align:center"><div class="cnt"><div class="num">04</div><div class="lbl"><b style="color:#fff">Monitor & Save</b><br>Live dashboard plus 24/7 support for the system's life.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Service FAQ ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Service FAQs</span>
+      <h2 data-split>Common Questions Before You Commit</h2>
+    </div>
+    <div style="max-width:780px;margin:0 auto">
+      <details class="faq-item reveal" open>
+        <summary>What happens if my system produces less than the guaranteed yield?</summary>
+        <p>For commercial and utility projects, we guarantee a P90 yield figure in writing. If actual generation falls below that threshold in any 12-month period due to equipment or design issues, we compensate you for the shortfall. The guarantee excludes force majeure events like extended cyclones or grid outages beyond our control.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Can I add battery storage to an existing solar system you didn't install?</summary>
+        <p>Yes, in most cases. We conduct a compatibility audit of your existing inverter and array before proposing a storage retrofit. Most Sungrow and SMA inverters from 2018 onwards support AC-coupled battery integration with minimal modifications.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How does the RESCO model work for commercial clients?</summary>
+        <p>Under a Renewable Energy Service Company model, we own, operate, and maintain the system on your rooftop. You pay a fixed per-unit (₹/kWh) rate — typically 20–35% below your current DISCOM tariff — for 15–25 years. Zero upfront investment from your side, guaranteed savings from day one.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Do you offer a single point of contact for the project?</summary>
+        <p>Yes. Every project is assigned a dedicated Project Manager from survey to commissioning, and a Customer Success Manager for the life of the O&M contract. One person, one number — no bouncing between departments.</p>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What is your average installation timeline?</summary>
+        <p>Residential (3–10 kW): 1–2 install days, 15–30 days for net-meter approval. Commercial (50 kW–1 MW): 2–6 weeks on site, 30–45 days for DISCOM commissioning. Utility scale: 6–18 months depending on land, grid connectivity, and permit complexity.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container">
+    <div class="band reveal">
+      <span class="eyebrow">Not Sure Where to Start?</span>
+      <h2 data-split>Tell us your monthly bill — we'll show you the system that erases it.</h2>
+      <a href="contact.html" class="btn btn-solar">Get My Free Design →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <a href="./index.html">
+      <img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img" style="margin-bottom:18px">
+      </a>
+      <p style="font-size:.92rem;max-width:300px">Designing, building, and maintaining renewable-energy systems since 2008.</p>
+      <div class="socials" style="margin-top:22px">
+        <a href="./error.html" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#000" style="fill: var(--yt-play-color, #000)"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="blog.html">Blog</a></div>
+    <div><h4>Services</h4><a href="services.html">Solar Panel Installation</a><a href="services.html">Wind Energy Systems</a><a href="services.html">Battery Storage & Backup</a><a href="services.html">EV Charging</a><a href="./error.html">FAQs</a></div>
+    <div><h4>Newsletter</h4><form class="news-form" data-demo-form><input type="email" placeholder="Your email" required><button type="submit">Join</button><div class="alert" style="display:none"></div></form></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© 2026 Renewable Power · STACKLY. All rights reserved.</span>
+    <span><a href="./error.html">Privacy Policy</a></span><span><a href="./error.html">Terms of Service</a></span>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard | Renewable Power</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dash">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <button class="sidebar-close" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a>
+    <div class="side-user"><b data-user-name>Administrator</b><span data-user-email>Super Admin</span></div>
+    <a href="admin-dashboard.html" class="active">📊 Admin Overview</a>
+    <a href="./error.html">👥 Customers</a>
+    <a href="./error.html">🏗️ Projects</a>
+    <a href="./error.html">⚡ Fleet Monitoring</a>
+    <a href="./error.html">🛠️ Service Queue</a>
+    <a href="./error.html">💰 Revenue</a>
+    <a href="./error.html">📝 Blog Manager</a>
+    <a href="./error.html">⚙️ Settings</a>
+    <!-- <!-- <div class="spacer"></div> -->
+    <a href="login.html">🚪 Logout</a>
+  </aside>
+
+  <!-- Main -->
+  <main class="dash-main">
+    <div class="dash-top">
+      <div style="display:flex;align-items:center">
+        <button class="dash-burger" aria-label="Menu">☰</button>
+        <div>
+          <h3>Admin Dashboard <span data-greet="🛠️">Admin Control Centre</span></h3>
+          <p style="color:var(--mut);font-size:.9rem">Fleet-wide status · Thursday, June 11, 2026 · All systems nominal</p>
+        </div>
+      </div>
+      <!-- <div class="who">
+        <div style="text-align:right"><b style="font-family:var(--font-d);color:var(--pine)" data-user-name>Administrator</b><br><span style="font-size:.8rem;color:var(--mut)" data-user-email>Super Admin</span></div>
+        <div class="avatar-initials" data-user-avatar>🛠️</div>
+      </div> -->
+    </div>
+
+    <!-- KPI cards -->
+    <div class="stat-cards">
+      <div class="stat-card"><div class="k">Total Customers</div><div class="v">12,408</div><div class="d up">▲ 214 this month</div></div>
+      <div class="stat-card"><div class="k">Fleet Output (live)</div><div class="v">612 MW</div><div class="d up">72% of capacity</div></div>
+      <div class="stat-card"><div class="k">Open Tickets</div><div class="v">37</div><div class="d down">▼ 12 vs last week</div></div>
+      <div class="stat-card"><div class="k">MRR (O&M Contracts)</div><div class="v">₹4.6 Cr</div><div class="d up">▲ 6.2% MoM</div></div>
+    </div>
+
+    <div class="dash-grid">
+      <!-- Fleet generation -->
+      <div class="panel">
+        <h3>Monthly Fleet Generation (GWh)</h3>
+        <div class="bars" style="margin-bottom:34px">
+          <div class="bar" style="height:58%"><i>Jan</i></div>
+          <div class="bar" style="height:64%"><i>Feb</i></div>
+          <div class="bar" style="height:78%"><i>Mar</i></div>
+          <div class="bar" style="height:91%"><i>Apr</i></div>
+          <div class="bar" style="height:96%"><i>May</i></div>
+          <div class="bar" style="height:70%"><i>Jun</i></div>
+        </div>
+      </div>
+
+      <!-- Fleet health -->
+      <div class="panel" style="text-align:center;position:relative">
+        <h3>Fleet Health Score</h3>
+        <div class="ring" style="--p:94;position:relative"><b>94%</b></div>
+        <p style="color:var(--mut);font-size:.88rem;margin-top:18px">1,166 of 1,240 sites at peak performance. 9 sites under maintenance, 0 critical faults.</p>
+      </div>
+    </div>
+
+    <!-- Customer management -->
+    <div class="panel">
+      <h3>Customer Management</h3>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Customer</th><th>System</th><th>Status</th><th>Monthly Yield</th><th>Plan</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td><b>Divya Raman</b><br><span style="font-size:.78rem;color:var(--mut)">RP-20448 · Salem</span></td><td>8 kW Solar + 10 kWh Battery</td><td><span class="pill ok">Online</span></td><td>912 kWh</td><td>Premium O&M</td><td><button class="mini-btn edit">Edit</button> <button class="mini-btn del">Remove</button></td></tr>
+            <tr><td><b>SRM Textiles</b><br><span style="font-size:.78rem;color:var(--mut)">RP-18302 · Erode</span></td><td>1.2 MW Rooftop Solar</td><td><span class="pill ok">Online</span></td><td>148 MWh</td><td>Enterprise</td><td><button class="mini-btn edit">Edit</button> <button class="mini-btn del">Remove</button></td></tr>
+            <tr><td><b>Nova Foods</b><br><span style="font-size:.78rem;color:var(--mut)">RP-19115 · Coimbatore</span></td><td>600 kW Solar + 2 MWh Storage</td><td><span class="pill warn">Maintenance</span></td><td>71 MWh</td><td>Enterprise</td><td><button class="mini-btn edit">Edit</button> <button class="mini-btn del">Remove</button></td></tr>
+            <tr><td><b>Karthik Iyer</b><br><span style="font-size:.78rem;color:var(--mut)">RP-21077 · Salem</span></td><td>5 kW Solar</td><td><span class="pill bad">Inverter Fault</span></td><td>0 kWh</td><td>Standard</td><td><button class="mini-btn edit">Edit</button> <button class="mini-btn del">Remove</button></td></tr>
+            <tr><td><b>GreenLeaf Resorts</b><br><span style="font-size:.78rem;color:var(--mut)">RP-20990 · Yercaud</span></td><td>120 kW Solar + Micro-Hydro</td><td><span class="pill ok">Online</span></td><td>16.4 MWh</td><td>Premium O&M</td><td><button class="mini-btn edit">Edit</button> <button class="mini-btn del">Remove</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Project pipeline -->
+    <div class="panel">
+      <h3>Active Project Pipeline</h3>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Project</th><th>Type</th><th>Capacity</th><th>Progress</th><th>Deadline</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><b>Coastal Breeze Phase II</b></td><td>Wind</td><td>30 MW</td><td>68%</td><td>Sep 2026</td><td><span class="pill ok">On Track</span></td></tr>
+            <tr><td><b>Metro Mall Carport Solar</b></td><td>Solar</td><td>2.4 MW</td><td>41%</td><td>Aug 2026</td><td><span class="pill ok">On Track</span></td></tr>
+            <tr><td><b>District Hospital Microgrid</b></td><td>Storage</td><td>4 MWh</td><td>22%</td><td>Jul 2026</td><td><span class="pill warn">Permits Pending</span></td></tr>
+            <tr><td><b>AgriSolar Pumps — Batch 7</b></td><td>Solar</td><td>800 pumps</td><td>87%</td><td>Jun 2026</td><td><span class="pill ok">Ahead</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Quick actions -->
+    <div class="panel" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+      <h3 style="margin:0;flex:1;min-width:200px">Quick Actions</h3>
+      <a href="#" class="btn btn-pine">＋ Add Customer</a>
+      <a href="#" class="btn btn-pine">＋ New Project</a>
+      <a href="#" class="btn btn-solar">📄 Export Fleet Report</a>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

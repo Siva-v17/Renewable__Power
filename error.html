@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | Renewable Power</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ---------- 404 page-specific styles ---------- */
+  .err-wrap{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;background:var(--grad-pine);color:#fff;position:relative;overflow:hidden;padding:40px 20px}
+  .err-wrap::before{content:"";position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=3840&auto=format&fit=crop') center/cover;
+    opacity:.16;mix-blend-mode:luminosity}
+  .err-wrap::after{content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(158,240,26,.14),transparent 55%),
+               radial-gradient(ellipse at 50% 100%,rgba(255,183,3,.16),transparent 50%)}
+  .err-inner{position:relative;z-index:2;max-width:680px}
+  .err-logo{height:54px;margin:0 auto 38px;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
+
+  .err-code{font-family:var(--font-d);font-weight:800;font-size:clamp(6rem,22vw,12rem);line-height:1;
+    display:flex;justify-content:center;gap:.04em;margin-bottom:8px}
+  .err-code span{background:var(--grad-energy);-webkit-background-clip:text;background-clip:text;color:transparent;
+    display:inline-block;filter:drop-shadow(0 14px 34px rgba(251,133,0,.35))}
+  /* The "0" is a spinning sun */
+  .err-sun{width:clamp(86px,17vw,158px);height:clamp(86px,17vw,158px);align-self:center;position:relative;
+    margin:0 .06em;animation:sunSpin 14s linear infinite}
+  .err-sun .core{position:absolute;inset:18%;border-radius:50%;background:var(--grad-energy);
+    box-shadow:0 0 60px rgba(255,183,3,.55),inset -8px -10px 24px rgba(0,0,0,.25)}
+  .err-sun .ray{position:absolute;top:0;left:50%;width:7%;height:16%;border-radius:99px;background:var(--solar);
+    transform-origin:50% calc(50% * 100 / 16);box-shadow:0 0 14px rgba(255,183,3,.6)}
+  @keyframes sunSpin{to{transform:rotate(360deg)}}
+
+  .err-title{font-family:var(--font-d);font-size:clamp(1.5rem,4vw,2.3rem);font-weight:800;margin-bottom:14px}
+  .err-text{color:#bcd9c9;font-weight:300;font-size:1.05rem;max-width:480px;margin:0 auto 36px}
+  .err-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .err-links{margin-top:42px;display:flex;gap:8px 22px;justify-content:center;flex-wrap:wrap;font-size:.9rem}
+  .err-links a{color:#9fc2af;transition:.3s}
+  .err-links a:hover{color:var(--volt)}
+
+  /* Floating panels drifting in the background */
+  .drift{position:absolute;border-radius:14px;border:1px solid rgba(158,240,26,.25);
+    background:linear-gradient(150deg,rgba(16,84,63,.5),rgba(6,42,34,.6));
+    backdrop-filter:blur(2px);animation:driftFloat 9s ease-in-out infinite;z-index:1}
+  .drift::before{content:"";position:absolute;inset:8px;border-radius:9px;
+    background:repeating-linear-gradient(0deg,transparent 0 16px,rgba(76,201,240,.18) 16px 18px),
+               repeating-linear-gradient(90deg,transparent 0 16px,rgba(76,201,240,.18) 16px 18px)}
+  .d1{width:130px;height:90px;top:14%;left:8%;transform:rotate(-9deg);animation-delay:.3s}
+  .d2{width:100px;height:70px;bottom:18%;right:9%;transform:rotate(12deg);animation-delay:1.6s}
+  .d3{width:80px;height:56px;top:22%;right:16%;transform:rotate(-16deg);animation-delay:2.6s}
+  @keyframes driftFloat{0%,100%{margin-top:0}50%{margin-top:-26px}}
+
+  @media(max-width:600px){
+    .drift{display:none}
+    .err-actions .btn{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="err-wrap">
+  <div class="drift d1"></div>
+  <div class="drift d2"></div>
+  <div class="drift d3"></div>
+
+  <div class="err-inner">
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="err-logo"></a>
+
+    <div class="err-code" aria-label="Error 404">
+      <span>4</span>
+      <div class="err-sun" aria-hidden="true">
+        <div class="ray" style="transform:rotate(0deg)"></div>
+        <div class="ray" style="transform:rotate(45deg)"></div>
+        <div class="ray" style="transform:rotate(90deg)"></div>
+        <div class="ray" style="transform:rotate(135deg)"></div>
+        <div class="ray" style="transform:rotate(180deg)"></div>
+        <div class="ray" style="transform:rotate(225deg)"></div>
+        <div class="ray" style="transform:rotate(270deg)"></div>
+        <div class="ray" style="transform:rotate(315deg)"></div>
+        <div class="core"></div>
+      </div>
+      <span>4</span>
+    </div>
+
+    <h1 class="err-title" data-split>Oops! This Page Lost Its Power</h1>
+    <p class="err-text">The page you're looking for has been moved, deleted, or never existed. Don't worry — the rest of the grid is fully online.</p>
+
+    <div class="err-actions">
+      <button type="button" class="btn btn-ghost" onclick="goBack()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Go Back
+      </button>
+      <a href="index.html" class="btn btn-solar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5V21a1 1 0 0 1-1 1h-5v-7h-6v7H4a1 1 0 0 1-1-1z"/></svg>
+        Back to Home
+      </a>
+    </div>
+
+    <!-- <div class="err-links">
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+      <a href="login.html">Login</a>
+    </div> -->
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="Terms of Servicescript.js"></script>
+<script>
+  /* Go Back — falls back to home if there's no history (direct visit) */
+  function goBack(){
+    if (window.history.length > 1) window.history.back();
+    else window.location.href = 'index.html';
+  }
+  /* Entrance animation */
+  if (window.gsap) {
+    gsap.from('.err-code > *', {y:60, opacity:0, duration:.9, stagger:.12, ease:'back.out(1.6)'});
+    gsap.from(['.err-text','.err-actions','.err-links'], {y:30, opacity:0, duration:.8, stagger:.12, delay:.5, ease:'power3.out'});
+  }
+</script>
+</body>
+</html>

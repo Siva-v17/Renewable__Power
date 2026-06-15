@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="preloader"><div class="pre-ring"></div></div>
+<div class="cursor-glow"></div>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-ghost">Login</a>
+      <a href="contact.html" class="btn btn-solar">Get a Quote ⚡</a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Our Portfolio</span>
+    <h1 data-split>1,240 Projects and Counting</h1>
+    <div class="crumb"><a href="index.html">Home</a> / Projects</div>
+  </div>
+</section>
+
+<!-- ── NEW: Featured Flagship Project ── -->
+<section>
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Flagship Project</span>
+      <h2 data-split>Our Biggest Build Yet</h2>
+    </div>
+    <div class="grid-2" style="align-items:center;gap:48px">
+      <div class="media reveal" style="position:relative">
+        <img src="https://images.unsplash.com/photo-1545208942-e1c9c916524b?q=80&w=3840&auto=format&fit=crop" alt="Salem Solar Park aerial view">
+        <div class="badge-3d"><div class="big">120 MW</div><div>Salem Solar Park</div></div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow">Case Study · 2025</span>
+        <h2 style="font-family:var(--font-d);color:var(--pine);font-size:1.9rem;margin-bottom:16px">Salem Solar Park — Powering 210,000 Homes</h2>
+        <p style="color:var(--mut);margin-bottom:18px">Spread across 480 acres of degraded land outside Salem, this is our largest single installation to date. 310,000 bifacial modules, robotic cleaning, a 24/7 SCADA control room, and enough clean power to replace 85,000 tonnes of coal every year.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px">
+          <div style="background:#f4faf6;border-radius:10px;padding:18px;border-left:3px solid var(--pine)">
+            <div style="font-size:1.6rem;font-weight:700;font-family:var(--font-d);color:var(--pine)">310,000</div>
+            <div style="font-size:.85rem;color:var(--mut)">Bifacial modules installed</div>
+          </div>
+          <div style="background:#f4faf6;border-radius:10px;padding:18px;border-left:3px solid var(--pine)">
+            <div style="font-size:1.6rem;font-weight:700;font-family:var(--font-d);color:var(--pine)">480 Acres</div>
+            <div style="font-size:.85rem;color:var(--mut)">Degraded land repurposed</div>
+          </div>
+          <div style="background:#fff3ec;border-radius:10px;padding:18px;border-left:3px solid var(--flame)">
+            <div style="font-size:1.6rem;font-weight:700;font-family:var(--font-d);color:var(--flame)">85,000 T</div>
+            <div style="font-size:.85rem;color:var(--mut)">Coal replaced annually</div>
+          </div>
+          <div style="background:#fff3ec;border-radius:10px;padding:18px;border-left:3px solid var(--flame)">
+            <div style="font-size:1.6rem;font-weight:700;font-family:var(--font-d);color:var(--flame)">14 months</div>
+            <div style="font-size:.85rem;color:var(--mut)">Land to grid-sync timeline</div>
+          </div>
+        </div>
+        <a href="contact.html" class="btn btn-pine">Discuss a Similar Project →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter + Grid -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Filter by Type</span>
+      <h2 data-split>Explore Work That Powers Real Communities</h2>
+    </div>
+
+    <div class="filter-bar" style="justify-content:center">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="solar">☀️ Solar</button>
+      <button data-filter="wind">🌬️ Wind</button>
+      <button data-filter="hydro">💧 Hydro</button>
+      <button data-filter="storage">🔋 Storage</button>
+      <button data-filter="ev">🚗 EV</button>
+    </div>
+
+    <div class="grid-3">
+      <!-- ORIGINAL 9 -->
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1545208942-e1c9c916524b?q=80&w=3840&auto=format&fit=crop" alt="Utility solar farm"><div class="info"><span class="tag">Solar</span><h3>Salem Solar Park — 120 MW</h3><div class="meta">Utility scale · 2025 · 210,000 homes powered</div></div></div>
+      <div class="proj reveal" data-cat="wind"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=3840&auto=format&fit=crop" alt="Wind cluster on hills"><div class="info"><span class="tag" style="background:var(--sky)">Wind</span><h3>Western Ghats Wind Cluster</h3><div class="meta">38 turbines · 95 MW · 2024</div></div></div>
+      <div class="proj reveal" data-cat="storage"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=3840&auto=format&fit=crop" alt="Battery storage facility"><div class="info"><span class="tag" style="background:var(--solar)">Storage</span><h3>GridGuard Battery Campus</h3><div class="meta">60 MWh LFP · Commercial · 2025</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=3840&auto=format&fit=crop" alt="Residential rooftop solar"><div class="info"><span class="tag">Solar</span><h3>SunHomes Residential Program</h3><div class="meta">2,400 rooftops · 18 MW combined · ongoing</div></div></div>
+      <div class="proj reveal" data-cat="hydro"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=3840&auto=format&fit=crop" alt="River in forested valley"><div class="info"><span class="tag" style="background:#4cc9f0">Hydro</span><h3>Kaveri Micro-Hydro Plant</h3><div class="meta">2.5 MW run-of-river · 2023</div></div></div>
+      <div class="proj reveal" data-cat="ev"><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=3840&auto=format&fit=crop" alt="EV charging station"><div class="info"><span class="tag" style="background:#ffd166;color:#5a4300">EV</span><h3>Highway FastCharge Corridor</h3><div class="meta">42 DC stations · 240 kW each · 2025</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=3840&auto=format&fit=crop" alt="Solar panels at dusk"><div class="info"><span class="tag">Solar</span><h3>AgriSolar Pump Network</h3><div class="meta">5,600 solar pumps for farms · 2024</div></div></div>
+      <div class="proj reveal" data-cat="wind"><img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=3840&auto=format&fit=crop" alt="Single wind turbine at dusk"><div class="info"><span class="tag" style="background:var(--sky)">Wind</span><h3>Coastal Breeze Phase II</h3><div class="meta">12 turbines · 30 MW · 2026 (in progress)</div></div></div>
+      <div class="proj reveal" data-cat="storage"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=3840&auto=format&fit=crop" alt="Solar panels with mountain backdrop"><div class="info"><span class="tag" style="background:var(--solar)">Storage</span><h3>Hospital Resilience Microgrid</h3><div class="meta">4 MWh + 2 MW solar · 2025</div></div></div>
+
+      <!-- ── NEW BATCH 1 ── -->
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=3840&auto=format&fit=crop" alt="Solar carport over parking lot"><div class="info"><span class="tag">Solar</span><h3>Coimbatore Tech Park Carport</h3><div class="meta">3.2 MW · 800 parking bays · 2025</div></div></div>
+      <div class="proj reveal" data-cat="wind"><img src="https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=3840&auto=format&fit=crop" alt="Wind turbines in flat farmland"><div class="info"><span class="tag" style="background:var(--sky)">Wind</span><h3>Palani Hills Wind Farm</h3><div class="meta">24 turbines · 56 MW · 2024</div></div></div>
+      <div class="proj reveal" data-cat="ev"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=3840&auto=format&fit=crop" alt="EV charging in city garage"><div class="info"><span class="tag" style="background:#ffd166;color:#5a4300">EV</span><h3>Chennai Metro Charge Hubs</h3><div class="meta">18 hubs · 50 kW AC · 2025</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1569012871812-f38ee64cd54c?q=80&w=3840&auto=format&fit=crop" alt="Solar on school rooftop"><div class="info"><span class="tag">Solar</span><h3>Tamil Nadu School Solar Mission</h3><div class="meta">312 government schools · 8.4 MW total · 2024</div></div></div>
+      <div class="proj reveal" data-cat="storage"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRME2ZGgH0RxllJnY9Z_Jss1aRm0DSs52uRdfKR-5z4WA&s=10" alt="Grid storage containers"><div class="info"><span class="tag" style="background:var(--solar)">Storage</span><h3>Tirunelveli Peak-Shaving Plant</h3><div class="meta">20 MWh BESS · Grid utility · 2025</div></div></div>
+      <div class="proj reveal" data-cat="hydro"><img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?q=80&w=3840&auto=format&fit=crop" alt="Mountain river with lush greenery"><div class="info"><span class="tag" style="background:#4cc9f0">Hydro</span><h3>Nilgiris Run-of-River Plant</h3><div class="meta">1.8 MW · fish-ladder equipped · 2023</div></div></div>
+
+      <!-- ── NEW BATCH 2 ── -->
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1487875961445-47a00398c267?q=80&w=3840&auto=format&fit=crop" alt="Large ground mount solar array"><div class="info"><span class="tag">Solar</span><h3>Madurai Industrial Solar Park</h3><div class="meta">45 MW · ground-mount · Export-oriented units · 2024</div></div></div>
+      <div class="proj reveal" data-cat="wind"><img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?q=80&w=3840&auto=format&fit=crop" alt="Offshore wind turbines in sea"><div class="info"><span class="tag" style="background:var(--sky)">Wind</span><h3>Gulf of Mannar Nearshore Wind</h3><div class="meta">8 turbines · 20 MW pilot · 2026 (in progress)</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=3840&auto=format&fit=crop" alt="Agrivoltaic farm with crops below panels"><div class="info"><span class="tag">Solar</span><h3>Erode Agrivoltaic Canopy</h3><div class="meta">6 MW · turmeric crops growing below · 2025</div></div></div>
+      <div class="proj reveal" data-cat="ev"><img src="https://i.pinimg.com/1200x/01/1f/ce/011fce2f12b60de8f8b61efd062ddd4a.jpg" alt="EV fleet charging depot"><div class="info"><span class="tag" style="background:#ffd166;color:#5a4300">EV</span><h3>TNSTC Electric Bus Depot</h3><div class="meta">120 bus chargers · 22 kW each · Trichy · 2025</div></div></div>
+      <div class="proj reveal" data-cat="storage"><img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=3840&auto=format&fit=crop" alt="Remote village with solar panels"><div class="info"><span class="tag" style="background:var(--solar)">Storage</span><h3>Off-Grid Village Microgrid</h3><div class="meta">48 villages · 2 MWh + 1.2 MW solar each · 2023</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=3840&auto=format&fit=crop" alt="Float solar on reservoir"><div class="info"><span class="tag">Solar</span><h3>Mettur Reservoir Floating Solar</h3><div class="meta">12 MW floating array · 32 acre water body · 2025</div></div></div>
+      <div class="proj reveal" data-cat="wind"><img src="https://cf-images.assettype.com/downtoearth/2026-03-17/c5wjkdih/Offshore-Wind-Tamil-Nadu.jpg?w=1200&h=900&auto=format%2Ccompress&fit=max&enlarge=true" alt="Wind turbines at golden hour"><div class="info"><span class="tag" style="background:var(--sky)">Wind</span><h3>Tiruppur Textile Wind Captive</h3><div class="meta">16 turbines · 40 MW · 6 mills captive · 2024</div></div></div>
+      <div class="proj reveal" data-cat="ev"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI1nrJZa_H1tOMoGYuGDVxhVy8qNgK9VQ1ReEsEmYI3utGkOmVVr0RbbA&s=10" alt="Solar-covered EV charging canopy"><div class="info"><span class="tag" style="background:#ffd166;color:#5a4300">EV</span><h3>Ooty Solar EV Canopy</h3><div class="meta">Solar-coupled DC fast-chargers · tourism zone · 2026</div></div></div>
+      <div class="proj reveal" data-cat="hydro"><img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=3840&auto=format&fit=crop" alt="Dam spillway and forested hills"><div class="info"><span class="tag" style="background:#4cc9f0">Hydro</span><h3>Siruvani Canal Hydro Units</h3><div class="meta">3 × 500 kW inline turbines · 2024</div></div></div>
+      <div class="proj reveal" data-cat="storage"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=3840&auto=format&fit=crop" alt="Data centre with solar panels on roof"><div class="info"><span class="tag" style="background:var(--solar)">Storage</span><h3>Chennai Data Centre UPS Hybrid</h3><div class="meta">8 MWh LFP + 2 MW rooftop solar · 2025</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=3840&auto=format&fit=crop" alt="Rooftop solar on apartment block"><div class="info"><span class="tag">Solar</span><h3>Vellore Housing Board Rooftops</h3><div class="meta">680 apartments · 3.4 MW · PM-Surya Ghar · 2026</div></div></div>
+      <div class="proj reveal" data-cat="wind"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=3840&auto=format&fit=crop" alt="Wind turbine blade close-up"><div class="info"><span class="tag" style="background:var(--sky)">Wind</span><h3>Aravalli Corridor Phase I</h3><div class="meta">22 turbines · 55 MW · Rajasthan · 2024</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?q=80&w=3840&auto=format&fit=crop" alt="Hospital with rooftop solar"><div class="info"><span class="tag">Solar</span><h3>Government Hospital Solar Drive</h3><div class="meta">28 hospitals · 5.6 MW · Karnataka · 2024</div></div></div>
+      <div class="proj reveal" data-cat="storage"><img src="https://i.pinimg.com/736x/67/a4/60/67a4607b9cf3dd5e6b1aa5674e5aa62d.jpg" alt="Data centre with solar panels on roof"><div class="info"><span class="tag" style="background:var(--solar)">Storage</span><h3>Coimbatore Data Centre UPS Hybrid</h3><div class="meta">8 MWh LFP + 2 MW rooftop solar · 2025</div></div></div>
+      <div class="proj reveal" data-cat="solar"><img src="https://i.pinimg.com/1200x/20/35/83/20358300ccb29b4e4a043a076ccde53a.jpg" alt="Rooftop solar on apartment block"><div class="info"><span class="tag">Wind</span><h3>Aralvaimozhi Wind Forms</h3><div class="meta">680 acers · 3.4 MW · PM-Gopukumar · 2026</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Stats Bar ── -->
+<section class="counters" style="padding:70px 0">
+  <div class="container grid-4">
+    <div class="cnt reveal"><div class="num" data-count="1240" data-suffix="+"></div><div class="lbl">Projects Delivered</div></div>
+    <div class="cnt reveal"><div class="num" data-count="850" data-suffix=" MW"></div><div class="lbl">Capacity Installed</div></div>
+    <div class="cnt reveal"><div class="num" data-count="14" data-suffix=""></div><div class="lbl">States Covered</div></div>
+    <div class="cnt reveal"><div class="num" data-count="0" data-suffix=""></div><div class="lbl">Lost-Time Safety Incidents</div></div>
+  </div>
+</section>
+
+<!-- ── NEW: Case Study Deep-Dives ── -->
+<section>
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Case Studies</span>
+      <h2 data-split>Three Projects. Three Very Different Challenges.</h2>
+      <p>Engineering problems are rarely the same twice. Here's how we solved three of the harder ones.</p>
+    </div>
+
+    <!-- Case 1 -->
+    <div style="border:1px solid #e5e5e5;border-radius:16px;overflow:hidden;margin-bottom:32px" class="reveal">
+      <div class="grid-2" style="align-items:stretch;gap:0">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2000&auto=format&fit=crop" alt="Floating solar on reservoir" style="width:100%;height:100%;object-fit:cover;min-height:300px">
+        <div style="padding:40px">
+          <span class="eyebrow">Case Study 01 · Floating Solar</span>
+          <h3 style="font-family:var(--font-d);color:var(--pine);font-size:1.5rem;margin-bottom:14px">Mettur Reservoir — 12 MW Floating Array</h3>
+          <p style="color:var(--mut);margin-bottom:18px"><b style="color:#333">The challenge:</b> Installing 32,000 modules on a live water body used for irrigation release, with no land access, monsoon windows only 11 weeks wide, and TANGEDCO interconnection at 2 km away.</p>
+          <p style="color:var(--mut);margin-bottom:18px"><b style="color:#333">Our solution:</b> HDPE floating pontoons anchored to a custom mooring grid, barge-mounted cranes, and a pre-built modular string design that cut on-water assembly time by 60%. Grid connection via underwater armoured cable to a dedicated pooling substation.</p>
+          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:24px">
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--pine)">12 MW</div><div style="font-size:.8rem;color:var(--mut)">Installed capacity</div></div>
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--pine)">18 mn kWh/yr</div><div style="font-size:.8rem;color:var(--mut)">Annual generation</div></div>
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--pine)">9 weeks</div><div style="font-size:.8rem;color:var(--mut)">On-water installation</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Case 2 -->
+    <div style="border:1px solid #e5e5e5;border-radius:16px;overflow:hidden;margin-bottom:32px" class="reveal">
+      <div class="grid-2" style="align-items:stretch;gap:0">
+        <div style="padding:40px">
+          <span class="eyebrow">Case Study 02 · Off-Grid</span>
+          <h3 style="font-family:var(--font-d);color:var(--pine);font-size:1.5rem;margin-bottom:14px">48 Villages — Microgrid Without the Grid</h3>
+          <p style="color:var(--mut);margin-bottom:18px"><b style="color:#333">The challenge:</b> Forty-eight hamlets in the Nilgiris with no grid connection, diesel generators running at ₹22/unit, and roads impassable by heavy equipment for six months of the year.</p>
+          <p style="color:var(--mut);margin-bottom:18px"><b style="color:#333">Our solution:</b> Containerised 1.2 MW solar + 2 MWh LFP microgrid per cluster, helicopter-lifted to four of the most remote sites, pre-wired and plug-and-play. Local youth trained as certified operators within 90 days of commissioning.</p>
+          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:24px">
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--flame)">₹22 → ₹4.80</div><div style="font-size:.8rem;color:var(--mut)">Cost per kWh achieved</div></div>
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--flame)">48 villages</div><div style="font-size:.8rem;color:var(--mut)">Electrified</div></div>
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--flame)">62 jobs</div><div style="font-size:.8rem;color:var(--mut)">Created locally</div></div>
+          </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?q=80&w=2000&auto=format&fit=crop" alt="Solar panels in a remote village" style="width:100%;height:100%;object-fit:cover;min-height:300px">
+      </div>
+    </div>
+
+    <!-- Case 3 -->
+    <div style="border:1px solid #e5e5e5;border-radius:16px;overflow:hidden" class="reveal">
+      <div class="grid-2" style="align-items:stretch;gap:0">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2000&auto=format&fit=crop" alt="Agrivoltaic canopy with crops" style="width:100%;height:100%;object-fit:cover;min-height:300px">
+        <div style="padding:40px">
+          <span class="eyebrow">Case Study 03 · Agrivoltaic</span>
+          <h3 style="font-family:var(--font-d);color:var(--pine);font-size:1.5rem;margin-bottom:14px">Erode Agrivoltaic Canopy — Land That Does Double Duty</h3>
+          <p style="color:var(--mut);margin-bottom:18px"><b style="color:#333">The challenge:</b> A cooperative of 220 turmeric farmers needed power for cold storage and pump sets, but couldn't afford to give up a single acre of productive farmland for a conventional ground-mount array.</p>
+          <p style="color:var(--mut);margin-bottom:18px"><b style="color:#333">Our solution:</b> Elevated bifacial modules at 4 m height — enough clearance for tractor access below — oriented east-west to reduce peak irradiance and extend the morning and evening harvest windows. Crop yield in the shaded micro-climate actually increased 12% in year one due to reduced heat stress.</p>
+          <div style="display:flex;gap:24px;flex-wrap:wrap;margin-top:24px">
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--pine)">6 MW</div><div style="font-size:.8rem;color:var(--mut)">Clean power for 220 farms</div></div>
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--pine)">+12%</div><div style="font-size:.8rem;color:var(--mut)">Crop yield improvement</div></div>
+            <div><div style="font-size:1.4rem;font-weight:700;color:var(--pine)">Zero land lost</div><div style="font-size:.8rem;color:var(--mut)">to energy production</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: Geographic Coverage ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="sec-head center">
+      <span class="eyebrow">Where We Build</span>
+      <h2 data-split>14 States. One Mission.</h2>
+      <p>From coastal Tamil Nadu to the Rajasthan desert — our crews and project managers are on the ground wherever clean energy makes sense.</p>
+    </div>
+    <div class="grid-4">
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🌴</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Tamil Nadu</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Our home state. 560+ projects including Salem Solar Park, SunHomes Program, and the Nilgiris microgrid network.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">560+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🏔️</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Karnataka</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Hospital solar drives, commercial rooftops in Bengaluru & Mysuru, and wind projects in the Chitradurga corridor.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">210+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🌊</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Andhra Pradesh</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Coastal wind farms, EV charging corridors on NH16, and large agri-solar pump programs in Krishna and Guntur.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">180+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🏜️</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Rajasthan</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Utility-scale ground-mounts leveraging the Thar's 6.5 kWh/m²/day irradiance. The Aravalli wind corridor is our newest frontier.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">90+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🌿</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Kerala</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Micro-hydro in the Western Ghats, rooftop solar for resorts and hospitals, and EV infrastructure for the tourism corridor.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">75+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🏭</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Maharashtra</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Industrial captive solar in Pune and Nashik manufacturing belts, and grid-scale BESS for peak management near Mumbai.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">60+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">🌾</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">Telangana</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">AgriSolar pump programs in Warangal and Nizamabad, commercial rooftops in Hyderabad's pharma cluster.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">55+ projects</div>
+      </div>
+      <div class="card tilt reveal" style="padding:22px">
+        <div style="font-size:1.5rem;margin-bottom:8px">➕</div>
+        <h3 style="font-size:1rem;color:var(--pine);margin-bottom:4px">7 More States</h3>
+        <p style="font-size:.85rem;color:var(--mut);margin-bottom:8px">Gujarat, Odisha, MP, Chhattisgarh, Goa, Puducherry, and the Andaman islands. Ask our team about your location.</p>
+        <div style="font-size:.8rem;font-weight:600;color:var(--flame)">Growing fast</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEW: In-Progress Highlights ── -->
+<section class="counters">
+  <div class="container">
+    <div class="sec-head center on-dark">
+      <span class="eyebrow">Under Construction</span>
+      <h2 data-split style="color:#fff">What's Being Built Right Now</h2>
+      <p style="color:rgba(255,255,255,.65);max-width:560px;margin:0 auto">These projects are live on our construction schedule as of June 2026.</p>
+    </div>
+    <div class="grid-3" style="margin-top:40px">
+      <div class="card reveal" style="padding:30px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <span class="tag" style="background:var(--sky)">Wind</span>
+          <span style="font-size:.78rem;color:var(--mut);background:rgba(255,255,255,.08);padding:3px 10px;border-radius:20px">72% complete</span>
+        </div>
+        <h3 style="margin-bottom:6px">Gulf of Mannar Nearshore Wind</h3>
+        <p style="color:var(--mut);font-size:.88rem;margin-bottom:14px">8 × 2.5 MW turbines on monopile foundations. First turbine energised March 2026; full commissioning expected September 2026.</p>
+        <div style="height:6px;background:rgba(255,255,255,.1);border-radius:4px"><div style="height:6px;width:72%;background:var(--pine);border-radius:4px"></div></div>
+      </div>
+      <div class="card reveal" style="padding:30px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <span class="tag">Solar</span>
+          <span style="font-size:.78rem;color:var(--mut);background:rgba(255,255,255,.08);padding:3px 10px;border-radius:20px">45% complete</span>
+        </div>
+        <h3 style="margin-bottom:6px">Coastal Breeze Phase II Wind Farm</h3>
+        <p style="color:var(--mut);font-size:.88rem;margin-bottom:14px">12 turbines at 30 MW along the Ramnad coast. Foundation work complete; tower sections being installed. Expected commissioning: December 2026.</p>
+        <div style="height:6px;background:rgba(255,255,255,.1);border-radius:4px"><div style="height:6px;width:45%;background:var(--flame);border-radius:4px"></div></div>
+      </div>
+      <div class="card reveal" style="padding:30px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <span class="tag" style="background:#ffd166;color:#5a4300">EV</span>
+          <span style="font-size:.78rem;color:var(--mut);background:rgba(255,255,255,.08);padding:3px 10px;border-radius:20px">88% complete</span>
+        </div>
+        <h3 style="margin-bottom:6px">Ooty Solar EV Canopy</h3>
+        <p style="color:var(--mut);font-size:.88rem;margin-bottom:14px">Solar-coupled DC fast-chargers at the Ooty tourism zone parking complex. Grid connection complete; solar canopy steelwork ongoing. Live by July 2026.</p>
+        <div style="height:6px;background:rgba(255,255,255,.1);border-radius:4px"><div style="height:6px;width:88%;background:var(--solar);border-radius:4px"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="band reveal">
+      <span class="eyebrow">Your Project Next?</span>
+      <h2 data-split>From a single rooftop to a hundred megawatts — we'd love to build it.</h2>
+      <a href="contact.html" class="btn btn-solar">Start a Project →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img" style="margin-bottom:18px">
+      <p style="font-size:.92rem;max-width:300px">Designing, building, and maintaining renewable-energy systems since 2008.</p>
+      <div class="socials" style="margin-top:22px">
+        <a href="./error.html" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#000" style="fill: var(--yt-play-color, #000)"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="blog.html">Blog</a></div>
+    <div><h4>Services</h4><a href="services.html">Solar Panel Installation</a><a href="services.html">Wind Energy Systems</a><a href="services.html">Battery Storage & Backup</a><a href="services.html">EV Charging</a><a href="./error.html">FAQs</a></div>
+    <div><h4>Newsletter</h4><form class="news-form" data-demo-form><input type="email" placeholder="Your email" required><button type="submit">Join</button><div class="alert" style="display:none"></div></form></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© 2026 Renewable Power · STACKLY. All rights reserved.</span>
+    <span><a href="./error.html">Privacy Policy</a></span><span><a href="./error.html">Terms of Service</a></span>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

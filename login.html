@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Renewable Power</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ============ Dark auth theme (reference style) ============ */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
+ 
+  .auth-dark{min-height:100vh;min-height:100dvh;display:grid;place-items:center;padding:48px 20px;
+    background:var(--cream);
+    position:relative;overflow:hidden}
+  /* faint grid + glow dots like the reference */
+  .auth-dark::before{content:"";position:absolute;inset:0;opacity:.5;
+    background:repeating-linear-gradient(0deg,transparent 0 79px,rgba(255,255,255,.025) 79px 80px),
+               repeating-linear-gradient(90deg,transparent 0 79px,rgba(255,255,255,.025) 79px 80px)}
+  .auth-dark::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(2px 2px at 18% 28%,rgba(158,240,26,.5),transparent 60%),
+               radial-gradient(2px 2px at 78% 18%,rgba(76,201,240,.5),transparent 60%),
+               radial-gradient(2px 2px at 64% 76%,rgba(255,183,3,.45),transparent 60%),
+               radial-gradient(2px 2px at 30% 84%,rgba(76,201,240,.4),transparent 60%)}
+ 
+  .auth-box{width:min(560px,100%);position:relative;z-index:2}
+  .auth-box .nav-logo-img{height:50px;margin-bottom:34px}
+ 
+  /* ── Segmented pill toggle ── */
+  .seg{display:flex;background: #e3e3e2;;border:1px solid rgba(255,255,255,.09);
+    border-radius:999px;padding:6px;color: black;margin-bottom:26px;backdrop-filter:blur(6px)}
+  .seg button{flex:1;padding:15px 10px;border:0;border-radius:999px;background:transparent;cursor:pointer;
+    font-family:var(--font-d);font-weight:700;font-size:1rem;color:black;transition:.35s}
+  .seg button.active{background:linear-gradient(135deg, var(--solar) 0%, var(--flame) 55%, #ff5e00 100%);box-shadow: 0 20px 40px -10px rgba(251, 133, 0, .7);color:#06231d;
+    box-shadow:0 0 0 2px rgba(255,255,255,.55),0 14px 34px -10px rgba(82,184,164,.55)}
+ 
+  /* ── Headings ── */
+  .auth-h{font-family:'Playfair Display',serif;font-weight:700;color:black;
+    font-size:clamp(2rem,5vw,2.7rem);margin-bottom:10px}
+  .auth-s{color:#92a8a1;font-size:1.02rem;margin-bottom:34px}
+ 
+  /* ── Role tabs (User / Admin) ── */
+  .role-row{display:flex;gap:10px;margin-bottom:26px;background-color: #e3ece2;border-radius: 999px;}
+  .role-row button{flex:1;padding:12px;border-radius:14px;cursor:pointer;font-family:var(--font-b);font-weight:600;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:black;transition:.3s}
+  .role-row button.active{border-color:rgba(158,240,26,.55);color:var(--volt);background:var(--pine);
+    box-shadow:0 0 24px -8px rgba(158,240,26,.5)}
+ 
+  /* ── Icon input fields ── */
+  .dfield{margin-bottom:18px}
+  .dfield label{display:block;font-weight:600;font-size:.92rem;color:black;margin-bottom:9px}
+  .dwrap{position:relative}
+  .dwrap .fi{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:#5d7a70;pointer-events:none;display:flex}
+  .dwrap input{width:100%;padding:17px 18px 17px 52px;border-radius:16px;font-family:var(--font-b);font-size:.98rem;
+    background:rgba(255,255,255,.045);border:1.5px solid rgba(6, 42, 34, .16);color:black;transition:.3s}
+  .dwrap input::placeholder{color:#5d7a70}
+  .dwrap input:focus{outline:none;border-color:var(--solar);background:rgba(82,184,164,.07);
+    box-shadow:0 0 0 4px rgba(255,183,3,.18)}
+  .dwrap input.error{border-color:#ff7a5c;box-shadow:0 0 0 4px rgba(255,122,92,.15)}
+  .row-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .err-msg{color:#ff9c85}
+ 
+  /* password eye on dark */
+  .dwrap input[type=password],.dwrap .pw-input{padding-right:54px}
+  .pw-toggle{color:#5d7a70}
+  .pw-toggle:hover{color:#bfeee2;background:rgba(255,255,255,.07)}
+ 
+  /* options + submit */
+  .opts{display:flex;justify-content:space-between;align-items:center;margin:4px 0 26px;font-size:.9rem;color:#92a8a1}
+  .opts a{color:#ffb703;font-weight:600}
+  .submit-btn{width:100%;justify-content:center;font-size:1rem;padding:17px}
+ 
+  /* divider + google dark */
+  .or-divider{color:#6e8a80}
+  .or-divider::before,.or-divider::after{background:rgba(255,255,255,.12)}
+  .btn-google{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);color:black}
+  .btn-google:hover{border-color:0 0 0 4px rgba(255,122,92,.15);background:rgba(82,184,164,.1);box-shadow:0 20px 40px -10px rgba(251, 133, 0, .7)}
+ 
+  .back-link{display:inline-block;margin-top:26px;color:black;font-size:.9rem;transition:.3s}
+  .back-link:hover{color:var(--solar)}
+ 
+  /* ── Modal overlay for Forgot Password & Account Created ── */
+  .auth-modal{position:fixed;inset:0;z-index:9000;display:none;align-items:center;justify-content:center;padding:24px}
+  .auth-modal.open{display:flex}
+  .auth-modal-bg{position:absolute;inset:0;background:rgba(2,12,9,.82);backdrop-filter:blur(6px)}
+  .auth-modal-box{position:relative;z-index:2;width:min(480px,100%);border-radius:24px;
+    padding:48px 42px;background:linear-gradient(160deg,#0e2e24,#071a12);
+    border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 80px -20px rgba(0,0,0,.7),0 0 0 1px rgba(82,184,164,.12)}
+  .modal-close{position:absolute;top:18px;right:18px;width:36px;height:36px;border-radius:10px;border:0;
+    background:rgba(255,255,255,.07);color:#9db8af;cursor:pointer;display:grid;place-items:center;transition:.25s}
+  .modal-close:hover{background:rgba(255,122,92,.2);color:#ff9c85}
+  .modal-icon{font-size:2.4rem;margin-bottom:18px}
+  .modal-h{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:700;color:#f4faf7;margin-bottom:10px}
+  .modal-s{color:#92a8a1;font-size:.97rem;margin-bottom:28px;line-height:1.6}
+  .modal-tick{width:68px;height:68px;border-radius:50%;background:linear-gradient(135deg,var(--volt),#4caf50);
+    display:grid;place-items:center;margin:0 auto 22px;box-shadow:0 0 40px -8px rgba(158,240,26,.6)}
+  .modal-tick svg{color:#0a1f18}
+  .alert.ok{background:rgba(158,240,26,.12);color:#c8f7a3;border-color:rgba(158,240,26,.35)}
+  .alert.err{background:rgba(255,122,92,.12);color:#ffb4a0;border-color:rgba(255,122,92,.35)}
+ 
+  @media(max-width:520px){
+    .row-2{grid-template-columns:1fr}
+    .seg button{font-size:.9rem;padding:13px 8px}
+  }
+</style>
+</head>
+<body>
+
+<div class="auth-wrap">
+  <!-- Left art -->  
+  <div class="auth-art">
+    <div>
+      <!-- <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a> -->
+      <h1 data-split>Welcome Back</h1>
+      <span class="eyebrow">Renewable Power Portal</span>
+        <!-- <section class="hero"> -->
+          <!-- <div class="container"> -->
+            <div>
+              <h1><span data-split>Powering Life With</span><br><span class="accent" data-split>Renewable Energy</span></h1>
+              <p class="lead">From rooftop solar to utility-scale wind farms, Renewable Power designs, builds, and maintains clean-energy systems that cut your bills and carbon footprint — for homes, businesses, and entire communities.</p>  
+            </div><br><br><br>      
+        <!-- </section> -->
+              <h2 data-split>Your Energy, Live and In Your Hands</h2>
+      <!-- <h1><span data-split>Powering Life With</span><br><span class="accent" data-split>Renewable Energy</span></h1> -->
+      <p style="color:#bcd9c9;max-width:420px">Track every kilowatt your system generates, view savings, raise service tickets, and download reports — all from one dashboard.</p>
+    </div>
+  </div>
+
+  <!-- Right panel -->
+  <body>
+
+<div class="auth-dark">
+  <div class="auth-box">
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a>
+
+    <!-- Segmented toggle -->
+    <div class="seg">
+      <button type="button" id="toggle-signin" class="active" onclick="switchMode('signin')">Sign In</button>
+      <button type="button" id="toggle-signup" onclick="switchMode('signup')">Create Account</button>
+    </div>
+
+    <h1 class="auth-h" id="authTitle">Welcome back</h1>
+    <p class="auth-s" id="authSub">Sign in to your STACKLY account</p>
+
+    <!-- Role selector -->
+    <div class="role-row" id="roleTabs">
+      <button type="button" class="active" data-role="user">👤 User</button>
+      <button type="button" data-role="admin">🛠️ Admin</button>
+    </div>
+
+    <!-- ════ SIGN IN ════ -->
+    <form id="loginForm" class="auth-form-panel active" novalidate>
+      <div class="alert"></div>
+      <div class="dfield">
+        <label for="signin-email">Email Address</label>
+        <div class="dwrap">
+          <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg></span>
+          <input type="email" id="signin-email" placeholder="Enter your email address">
+        </div>
+        <span class="err-msg" id="err-signin-email">Please enter a valid email address.</span>
+      </div>
+      <div class="dfield">
+        <label for="signin-pass">Password</label>
+        <div class="dwrap pw-wrap">
+          <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <input type="password" id="signin-pass" class="pw-input" placeholder="Enter your password">
+          <button type="button" class="pw-toggle" aria-label="Show or hide password" data-target="signin-pass">
+            <svg class="eye-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </button>
+        </div>
+        <span class="err-msg" id="err-signin-pass">Please enter your password.</span>
+      </div>
+      <div class="opts">
+        <label style="display:flex;gap:8px;align-items:center"><input type="checkbox"> Remember me</label>
+        <a href="#" onclick="openModal('forgotModal');return false">Forgot password?</a>
+      </div>
+      <button type="submit" id="btn-signin" class="btn btn-solar submit-btn">Sign In ⚡</button>
+    </form>
+
+    <!-- ════ CREATE ACCOUNT ════ -->
+    <form id="signupForm" class="auth-form-panel" novalidate>
+      <div class="alert"></div>
+      <div class="row-2">
+        <div class="dfield">
+          <label for="signup-first">First Name</label>
+          <div class="dwrap">
+            <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+            <input type="text" id="signup-first" placeholder="Enter your first name">
+          </div>
+          <span class="err-msg" id="err-signup-first">Please enter your first name.</span>
+        </div>
+        <div class="dfield">
+          <label for="signup-last">Last Name</label>
+          <div class="dwrap">
+            <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+            <input type="text" id="signup-last" placeholder="Enter your last name">
+          </div>
+          <span class="err-msg" id="err-signup-last">Please enter your last name.</span>
+        </div>
+      </div>
+      <div class="dfield">
+        <label for="signup-email">Email Address</label>
+        <div class="dwrap">
+          <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg></span>
+          <input type="email" id="signup-email" placeholder="Enter your email address">
+        </div>
+        <span class="err-msg" id="err-signup-email">Please enter a valid email address.</span>
+      </div>
+      <div class="dfield">
+        <label for="signup-phone">Phone Number</label>
+        <div class="dwrap">
+          <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <input type="tel" id="signup-phone" placeholder="Enter your phone number">
+        </div>
+        <span class="err-msg" id="err-signup-phone">Please enter a valid 10-digit phone number.</span>
+      </div>
+      <div class="dfield">
+        <label for="signup-pass">Password</label>
+        <div class="dwrap pw-wrap">
+          <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></span>
+          <input type="password" id="signup-pass" class="pw-input" placeholder="Minimum 6 characters">
+          <button type="button" class="pw-toggle" aria-label="Show or hide password" data-target="signup-pass">
+            <svg class="eye-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </button>
+        </div>
+        <span class="err-msg" id="err-signup-pass">Password must be at least 6 characters.</span>
+      </div>
+      <div class="dfield" style="margin-bottom:26px">
+        <label for="signup-confirm">Confirm Password</label>
+        <div class="dwrap pw-wrap">
+          <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><path d="m9 16 2 2 4-4"/></svg></span>
+          <input type="password" id="signup-confirm" class="pw-input" placeholder="Re-enter password">
+          <button type="button" class="pw-toggle" aria-label="Show or hide password" data-target="signup-confirm">
+            <svg class="eye-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <svg class="eye-off" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+          </button>
+        </div>
+        <span class="err-msg" id="err-signup-confirm">Passwords do not match.</span>
+      </div>
+      <button type="submit" id="btn-signup" class="btn btn-solar submit-btn">Create My Account →</button>
+    </form>
+
+    <div class="or-divider"><span>or</span></div>
+
+    <button type="button" class="btn-google" onclick="window.location.href='./error.html'">
+      <svg width="20" height="20" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+      </svg>
+      Continue with Google
+    </button>
+
+    <a href="index.html" class="back-link">← Back to website</a>
+  </div>
+
+  <!-- ════ FORGOT PASSWORD MODAL ════ -->
+  <div class="auth-modal" id="forgotModal" role="dialog" aria-modal="true" aria-labelledby="forgotTitle">
+    <div class="auth-modal-bg" onclick="closeModal('forgotModal')"></div>
+    <div class="auth-modal-box">
+      <button class="modal-close" onclick="closeModal('forgotModal')" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+      <div class="modal-icon">🔑</div>
+      <h2 class="modal-h" id="forgotTitle">Reset Password</h2>
+      <p class="modal-s">Enter your email and we'll send you a reset link.</p>
+      <form id="forgotForm" novalidate>
+        <div class="dfield">
+          <label for="reset-email" style="color:#d7e7e0;font-weight:600;font-size:.92rem;display:block;margin-bottom:9px">Email Address</label>
+          <div class="dwrap">
+            <span class="fi"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m2 7 10 7 10-7"/></svg></span>
+            <input type="email" id="reset-email" placeholder="Enter your email">
+          </div>
+          <span class="err-msg" id="err-reset-email">Please enter a valid email address.</span>
+        </div>
+        <div class="alert" id="forgotAlert" style="margin-bottom:16px"></div>
+        <button type="submit" class="btn btn-solar" style="width:100%;justify-content:center;padding:17px;font-size:1rem">Send Reset Link</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ════ ACCOUNT CREATED MODAL ════ -->
+  <div class="auth-modal" id="successModal" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="auth-modal-bg"></div>
+    <div class="auth-modal-box" style="text-align:center">
+      <div class="modal-tick">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 class="modal-h" id="successTitle">Account Created!</h2>
+      <p class="modal-s">Your account has been created successfully.<br>You can now sign in with your credentials.</p>
+      <button type="button" class="btn btn-solar" style="width:100%;justify-content:center;padding:17px;font-size:1rem"
+        onclick="closeModal('successModal');switchMode('signin')">Sign In Now ⚡</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

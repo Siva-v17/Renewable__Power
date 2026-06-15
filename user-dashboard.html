@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dash">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <button class="sidebar-close" aria-label="Close menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a>
+    <div class="side-user"><b data-user-name>Customer</b><span data-user-email>Signed in</span></div>
+    <a href="user-dashboard.html" class="active">📊 Overview</a>
+    <a href="./error.html">⚡ Live Generation</a>
+    <a href="./error.html">💰 Savings & Billing</a>
+    <a href="./error.html">🔋 Battery Status</a>
+    <a href="./error.html">🛠️ Service Tickets</a>
+    <a href="./error.html">📄 Reports</a>
+    <a href="./error.html">⚙️ Settings</a>
+    <a href="login.html">🚪 Logout</a>
+    <!-- <div class="spacer"></div> -->
+    
+  </aside>
+
+  <!-- Main -->
+  <main class="dash-main">
+    <div class="dash-top">
+      <div style="display:flex;align-items:center">
+        <button class="dash-burger" aria-label="Menu">☰</button>
+        <div>
+          <h3>My Dashboard <span data-greet="☀️">My Dashboard Good morning ☀️</span></h3>
+          <p style="color:var(--mut);font-size:.9rem">Your 8 kW rooftop system · Salem · Thursday, June 11, 2026</p>
+        </div>
+      </div>
+      <!-- <div class="who">
+        <div style="text-align:right"><b style="font-family:var(--font-d);color:var(--pine)" data-user-name>Customer</b><br><span style="font-size:.8rem;color:var(--mut)" data-user-email>Customer ID: RP-20448</span></div>
+        <div class="avatar-initials" data-user-avatar>👤</div>
+      </div> -->
+    </div>
+
+    <!-- Stat cards -->
+    <div class="stat-cards">
+      <div class="stat-card"><div class="k">Today's Generation</div><div class="v">32.4 kWh</div><div class="d up">▲ 8% vs yesterday</div></div>
+      <div class="stat-card"><div class="k">This Month</div><div class="v">912 kWh</div><div class="d up">▲ 4% vs May</div></div>
+      <div class="stat-card"><div class="k">Battery Charge</div><div class="v">86%</div><div class="d up">Backup ready · 9.2 h</div></div>
+      <div class="stat-card"><div class="k">Lifetime Savings</div><div class="v">₹2.84 L</div><div class="d up">▲ ₹6,120 this month</div></div>
+    </div>
+
+    <div class="dash-grid">
+      <!-- Generation chart -->
+      <div class="panel">
+        <h3>Weekly Generation (kWh)</h3>
+        <div class="bars" style="margin-bottom:34px">
+          <div class="bar" style="height:62%"><i>Mon</i></div>
+          <div class="bar" style="height:74%"><i>Tue</i></div>
+          <div class="bar" style="height:55%"><i>Wed</i></div>
+          <div class="bar" style="height:88%"><i>Thu</i></div>
+          <div class="bar" style="height:69%"><i>Fri</i></div>
+          <div class="bar" style="height:93%"><i>Sat</i></div>
+          <div class="bar" style="height:80%"><i>Sun</i></div>
+        </div>
+      </div>
+
+      <!-- Self-sufficiency ring -->
+      <div class="panel" style="text-align:center;position:relative">
+        <h3>Energy Self-Sufficiency</h3>
+        <div class="ring" style="--p:78;position:relative"><b>78%</b></div>
+        <p style="color:var(--mut);font-size:.88rem;margin-top:18px">78% of your home's power came from your own panels and battery this month. Grid import: 22%.</p>
+      </div>
+    </div>
+
+    <!-- Environmental impact -->
+    <div class="stat-cards" style="grid-template-columns:repeat(3,1fr)">
+      <div class="stat-card"><div class="k">🌿 CO₂ Avoided (lifetime)</div><div class="v">21.6 t</div><div class="d up">≈ 980 trees planted</div></div>
+      <div class="stat-card"><div class="k">☀️ Peak Output Today</div><div class="v">7.4 kW</div><div class="d up">at 12:40 PM</div></div>
+      <div class="stat-card"><div class="k">⚡ Exported to Grid</div><div class="v">118 kWh</div><div class="d up">this month · ₹826 credit</div></div>
+    </div>
+
+    <!-- Recent activity -->
+    <div class="panel">
+      <h3>Recent Activity & Service History</h3>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Date</th><th>Event</th><th>Details</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>Jun 09, 2026</td><td>Panel Cleaning</td><td>Quarterly robotic clean — output +6%</td><td><span class="pill ok">Completed</span></td></tr>
+            <tr><td>Jun 05, 2026</td><td>Firmware Update</td><td>Inverter v4.2 — improved tariff optimisation</td><td><span class="pill ok">Completed</span></td></tr>
+            <tr><td>May 28, 2026</td><td>Net-Meter Reading</td><td>118 kWh export credited to TNEB bill</td><td><span class="pill ok">Credited</span></td></tr>
+            <tr><td>May 19, 2026</td><td>Ticket #4821</td><td>Battery balancing check requested</td><td><span class="pill warn">Scheduled</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Quick actions -->
+    <div class="panel" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">
+      <h3 style="margin:0;flex:1;min-width:200px">Need something?</h3>
+      <a href="contact.html" class="btn btn-pine">🛠️ Raise Service Ticket</a>
+      <a href="#" class="btn btn-solar">📄 Download June Report</a>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* ── Extended Blog Styles ── */
+
+  /* Trending Ticker */
+  .ticker-wrap {
+    background: var(--pine, #1a3a2e);
+    color: #fff;
+    padding: 10px 0;
+    overflow: hidden;
+    border-bottom: 2px solid var(--flame, #e8521a);
+  }
+  .ticker-inner {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .ticker-label {
+    background: var(--flame, #e8521a);
+    padding: 2px 18px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-right: 24px;
+  }
+  .ticker-track {
+    display: flex;
+    gap: 48px;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-track span {
+    font-size: .82rem;
+    opacity: .85;
+  }
+  .ticker-track span::before {
+    content: "⚡ ";
+    color: var(--flame, #e8521a);
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Topic Filter Bar */
+  .filter-bar {
+    background: #fff;
+    border-bottom: 1px solid #e8eeea;
+    padding: 0;
+    position: sticky;
+    top: 64px;
+    z-index: 89;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .filter-bar .container {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 14px 0;
+  }
+  .filter-bar .container::-webkit-scrollbar { display: none; }
+  .ftag {
+    padding: 6px 18px;
+    border-radius: 100px;
+    border: 1.5px solid #d5e0d9;
+    background: transparent;
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--pine, #1a3a2e);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background .2s, border-color .2s, color .2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .ftag:hover {
+    background: var(--pine, #1a3a2e);
+    border-color: var(--pine, #1a3a2e);
+    color: #fff;
+  }
+  .filter-bar .ftag.active {
+    background: var(--flame, #e8521a) !important;
+    border-color: var(--flame, #e8521a) !important;
+    color: #fff !important;
+  }
+
+  /* Editor's Picks — horizontal scroll cards */
+  .picks-scroll {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #d5e0d9 transparent;
+  }
+  .pick-card {
+    min-width: 300px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--pine, #1a3a2e);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform .25s;
+  }
+  .pick-card:hover { transform: translateY(-4px); }
+  .pick-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+    filter: brightness(.75);
+  }
+  .pick-card-body {
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .pick-card .cat {
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--flame, #e8521a);
+    margin-bottom: 8px;
+  }
+  .pick-card h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .pick-card p {
+    font-size: .82rem;
+    color: rgba(255,255,255,.65);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .pick-card .read-time {
+    margin-top: 14px;
+    font-size: .75rem;
+    color: rgba(255,255,255,.45);
+  }
+
+  /* By the Numbers section */
+  .numbers-section {
+    background: linear-gradient(135deg, #f0f7f3 0%, #e6f2ec 100%);
+    border-top: 1px solid #d0e8da;
+    border-bottom: 1px solid #d0e8da;
+  }
+  .numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  @media (max-width: 800px) {
+    .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  .stat-block {
+    padding: 36px 28px;
+    border-right: 1px solid #d0e8da;
+    text-align: center;
+  }
+  .stat-block:last-child { border-right: none; }
+  .stat-block .big-num {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 3rem;
+    color: var(--pine, #1a3a2e);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-block .big-num em {
+    font-style: normal;
+    color: var(--flame, #e8521a);
+    font-size: 2rem;
+  }
+  .stat-block .stat-label {
+    font-size: .78rem;
+    color: #6a8074;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Interview / Q&A strip */
+  .qa-strip {
+    background: var(--pine, #1a3a2e);
+    color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  @media (max-width: 760px) { .qa-strip { grid-template-columns: 1fr; } }
+  .qa-img {
+    min-height: 380px;
+    background-image: url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .qa-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(26,58,46,.5), transparent);
+  }
+  .qa-content {
+    padding: 48px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .qa-content .eyebrow-light {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--flame, #e8521a);
+    margin-bottom: 16px;
+  }
+  .qa-content h2 {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 1.8rem;
+    line-height: 1.25;
+    margin-bottom: 16px;
+    color: #fff;
+  }
+  .qa-content p {
+    color: rgba(255,255,255,.7);
+    font-size: .92rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+  .qa-content blockquote {
+    border-left: 3px solid var(--flame, #e8521a);
+    padding-left: 16px;
+    margin: 0 0 28px;
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,.9);
+    line-height: 1.5;
+  }
+  .qa-byline {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .qa-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--flame, #e8521a);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; color: #fff;
+    flex-shrink: 0;
+  }
+  .qa-name { font-size: .88rem; font-weight: 600; color: #fff; }
+  .qa-title { font-size: .75rem; color: rgba(255,255,255,.5); }
+
+  /* Long-form list posts */
+  .list-post {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 24px 0;
+    border-bottom: 1px solid #e6eeea;
+    text-decoration: none;
+    color: inherit;
+    transition: opacity .2s;
+  }
+  .list-post:hover { opacity: .75; }
+  .list-post:last-child { border-bottom: none; }
+  .list-num {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 3rem;
+    color: #d5e5dc;
+    line-height: 1;
+    text-align: right;
+  }
+  .list-post-body {}
+  .list-post-body .pmeta {
+    display: flex;
+    gap: 12px;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #8aab96;
+    margin-bottom: 6px;
+  }
+  .list-post-body .pmeta b { color: var(--flame, #e8521a); }
+  .list-post-body h3 {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 1.2rem;
+    line-height: 1.35;
+    color: var(--pine, #1a3a2e);
+    margin-bottom: 6px;
+  }
+  .list-post-body p {
+    font-size: .85rem;
+    color: #6a8074;
+    line-height: 1.55;
+  }
+
+  /* Author spotlight */
+  .author-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  @media (max-width: 860px) { .author-cards { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .author-cards { grid-template-columns: 1fr; } }
+  .author-card {
+    border: 1.5px solid #e2eee7;
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    background: #fff;
+    transition: box-shadow .2s, transform .2s;
+  }
+  .author-card:hover { box-shadow: 0 8px 32px rgba(26,58,46,.08); transform: translateY(-3px); }
+  .author-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    font-size: 1.6rem;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    color: #fff;
+  }
+  .author-card h4 {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 1.1rem;
+    color: var(--pine, #1a3a2e);
+    margin-bottom: 4px;
+  }
+  .author-card .role {
+    font-size: .75rem;
+    color: #8aab96;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .author-card p { font-size: .83rem; color: #6a8074; line-height: 1.55; }
+  .author-card .post-count {
+    margin-top: 14px;
+    font-size: .78rem;
+    font-weight: 600;
+    color: var(--flame, #e8521a);
+  }
+
+  /* Podcast / Video row */
+  .media-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 700px) { .media-row { grid-template-columns: 1fr; } }
+  .media-card {
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1.5px solid #e2eee7;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .25s;
+  }
+  .media-card:hover { box-shadow: 0 8px 36px rgba(26,58,46,.1); }
+  .media-thumb {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+  }
+  .media-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .4s;
+  }
+  .media-card:hover .media-thumb img { transform: scale(1.04); }
+  .media-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: rgba(26,58,46,.85);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+  .play-btn {
+    position: absolute;
+    bottom: 14px; right: 14px;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--flame, #e8521a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(232,82,26,.4);
+  }
+  .media-card-body { padding: 22px 22px 26px; }
+  .media-card-body .pmeta {
+    display: flex; gap: 12px;
+    font-size: .75rem; text-transform: uppercase; letter-spacing: .06em;
+    color: #8aab96; margin-bottom: 8px;
+  }
+  .media-card-body .pmeta b { color: var(--flame, #e8521a); }
+  .media-card-body h3 {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 1.1rem; line-height: 1.38;
+    color: var(--pine, #1a3a2e); margin-bottom: 8px;
+  }
+  .media-card-body p { font-size: .83rem; color: #6a8074; line-height: 1.55; }
+
+  /* In the Field – photo essay */
+  .photo-essay {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+  @media (max-width: 700px) { .photo-essay { grid-template-columns: 1fr 1fr; } }
+  .pe-cell {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .pe-cell img {
+    width: 100%; height: 220px;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s;
+    filter: brightness(.85);
+  }
+  .pe-cell:hover img { transform: scale(1.05); }
+  .pe-cell.large { grid-column: span 2; }
+  .pe-cell.large img { height: 340px; }
+  .pe-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,58,46,.75) 0%, transparent 50%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 20px;
+    color: #fff;
+  }
+  .pe-overlay .pe-caption { font-size: .82rem; opacity: .8; line-height: 1.4; }
+  .pe-overlay .pe-title { font-family: var(--font-d, 'DM Serif Display', serif); font-size: 1.05rem; line-height: 1.3; }
+
+  /* Section titles */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .section-header h2 {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 1.9rem;
+    color: var(--pine, #1a3a2e);
+  }
+  .see-all {
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--flame, #e8521a);
+    text-decoration: none;
+    letter-spacing: .04em;
+  }
+  .see-all:hover { text-decoration: underline; }
+
+  /* Tools / Calculators CTA cards */
+  .tool-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 800px) { .tool-cards { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .tool-cards { grid-template-columns: 1fr; } }
+  .tool-card {
+    background: #fff;
+    border: 1.5px solid #e2eee7;
+    border-radius: 16px;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow .22s, transform .22s;
+  }
+  .tool-card:hover { box-shadow: 0 8px 32px rgba(26,58,46,.09); transform: translateY(-3px); }
+  .tool-icon {
+    font-size: 2rem;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .tool-card h4 {
+    font-family: var(--font-d, 'DM Serif Display', serif);
+    font-size: 1.05rem;
+    color: var(--pine, #1a3a2e);
+    line-height: 1.3;
+  }
+  .tool-card p { font-size: .82rem; color: #6a8074; line-height: 1.5; flex: 1; }
+  .tool-card .tool-cta {
+    font-size: .8rem; font-weight: 700;
+    color: var(--flame, #e8521a);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+  }
+
+  /* Utility */
+  .mt-s { margin-top: 16px; }
+  .mt-m { margin-top: 32px; }
+  .divider {
+    border: none;
+    border-top: 1px solid #e2eee7;
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+<div class="preloader"><div class="pre-ring"></div></div>
+<div class="cursor-glow"></div>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="index.html"><img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img"></a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="login.html" class="btn btn-ghost">Login</a>
+      <a href="contact.html" class="btn btn-solar">Get a Quote ⚡</a>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">The Energy Desk</span>
+    <h1 data-split>News, Guides & Grid Wisdom</h1>
+    <div class="crumb"><a href="index.html">Home</a> / Blog</div>
+  </div>
+</section>
+
+<!-- ── TRENDING TICKER ── -->
+<div class="ticker-wrap">
+  <div class="container" style="padding:0;overflow:hidden">
+    <div class="ticker-inner">
+      <!-- <div class="ticker-label">Trending</div> -->
+      <div class="ticker-track">
+        <span>India's rooftop solar capacity crosses 18 GW milestone</span>
+        <span>MNRE raises PM Surya Ghar subsidy to ₹78,000 per household</span>
+        <span>LFP battery prices fall 31% in 2025 — lowest ever recorded</span>
+        <span>Tamil Nadu adds 2.4 GW solar in Q1 2026, leads all states</span>
+        <span>Net metering amendment: prosumers now earn ₹4.50/kWh in TN</span>
+        <span>Bifacial module efficiency record broken at 24.1%</span>
+        <!-- duplicate for seamless loop -->
+        <span>India's rooftop solar capacity crosses 18 GW milestone</span>
+        <span>MNRE raises PM Surya Ghar subsidy to ₹78,000 per household</span>
+        <span>LFP battery prices fall 31% in 2025 — lowest ever recorded</span>
+        <span>Tamil Nadu adds 2.4 GW solar in Q1 2026, leads all states</span>
+        <span>Net metering amendment: prosumers now earn ₹4.50/kWh in TN</span>
+        <span>Bifacial module efficiency record broken at 24.1%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOPIC FILTER ── -->
+<!-- <div class="filter-bar">
+  <div class="container">
+    <a class="ftag active" href="#">All Topics</a>
+    <a class="ftag" href="#">Solar</a>
+    <a class="ftag" href="#">Storage</a>
+    <a class="ftag" href="#">Policy</a>
+    <a class="ftag" href="#">EV</a>
+    <a class="ftag" href="#">Wind</a>
+    <a class="ftag" href="#">Hydro</a>
+    <a class="ftag" href="#">Guides</a>
+    <a class="ftag" href="#">Finance</a>
+    <a class="ftag" href="#">Industry</a>
+  </div>
+</div> -->
+
+<!-- ── FEATURED ── -->
+<section>
+  <div class="container grid-2" style="align-items:center">
+    <div class="media reveal"><img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=3840&auto=format&fit=crop" alt="Solar farm aerial view"><div class="badge-3d"><div class="big">Featured</div><div>Editor's Pick</div></div></div>
+    <div class="reveal">
+      <div class="pmeta" style="display:flex;gap:16px;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);margin-bottom:14px"><b style="color:var(--flame)">Deep Dive</b><span>June 8, 2026 · 12 min read</span></div>
+      <h2 style="font-family:var(--font-d);color:var(--pine);font-size:2rem;line-height:1.2;margin-bottom:16px" data-split>Inside a 120 MW Solar Park: What It Really Takes to Power 210,000 Homes</h2>
+      <p style="color:var(--mut);margin-bottom:24px">We walk you through the Salem Solar Park from bare land to grid sync — land prep, 310,000 bifacial modules, robotic cleaning, and the control room that balances it all in real time.</p>
+      <a href="#" class="btn btn-pine">Read the Full Story →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── BY THE NUMBERS ── -->
+<section class="numbers-section" style="padding:0">
+  <div class="numbers-grid">
+    <div class="stat-block reveal">
+      <div class="big-num">310<em>GW</em></div>
+      <div class="stat-label">India's total renewable<br>capacity as of Q1 2026</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="big-num">₹2.1<em>/kWh</em></div>
+      <div class="stat-label">Lowest solar tariff<br>discovered in 2025</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="big-num">18<em>%</em></div>
+      <div class="stat-label">Average rooftop solar<br>system payback reduction YoY</div>
+    </div>
+    <div class="stat-block reveal">
+      <div class="big-num">5.4<em>Cr</em></div>
+      <div class="stat-label">Households targeted under<br>PM Surya Ghar by 2027</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EDITOR'S PICKS HORIZONTAL ── -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2>Editor's Picks</h2>
+      <a class="see-all" href="#">View all →</a>
+    </div>
+    <div class="picks-scroll">
+      <a class="pick-card reveal" href="#">
+        <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=1600&auto=format&fit=crop" alt="Smart meter">
+        <div class="pick-card-body">
+          <div class="cat">Finance</div>
+          <h3>How to Calculate Your True Solar ROI: The 9-Factor Model</h3>
+          <p>Beyond the simple payback period — degradation curves, tariff escalation, and resale value explained.</p>
+          <div class="read-time">8 min read · May 30, 2026</div>
+        </div>
+      </a>
+      <a class="pick-card reveal" href="#">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=1600&auto=format&fit=crop" alt="Wind turbines">
+        <div class="pick-card-body">
+          <div class="cat">Wind</div>
+          <h3>Small Wind Turbines for Rural India: A Practical Buyer's Guide</h3>
+          <p>Which sites qualify, what permits you'll need, and the five brands installers actually trust.</p>
+          <div class="read-time">11 min read · May 15, 2026</div>
+        </div>
+      </a>
+      <a class="pick-card reveal" href="#">
+        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?q=80&w=1600&auto=format&fit=crop" alt="Grid infrastructure">
+        <div class="pick-card-body">
+          <div class="cat">Policy</div>
+          <h3>Decoding DISCOM Approvals: Why Grid Connectivity Takes So Long</h3>
+          <p>The seven bureaucratic chokepoints that delay rooftop solar by months, and what's being done about them.</p>
+          <div class="read-time">7 min read · May 5, 2026</div>
+        </div>
+      </a>
+      <a class="pick-card reveal" href="#">
+        <img src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?q=80&w=1600&auto=format&fit=crop" alt="Solar installation on home">
+        <div class="pick-card-body">
+          <div class="cat">Guides</div>
+          <h3>The Complete First-Timer's Checklist for Going Solar in 2026</h3>
+          <p>Shadow mapping, inverter sizing, warranty terms — everything to ask before you sign an installation contract.</p>
+          <div class="read-time">14 min read · April 18, 2026</div>
+        </div>
+      </a>
+      <a class="pick-card reveal" href="#">
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=1600&auto=format&fit=crop" alt="Battery installation">
+        <div class="pick-card-body">
+          <div class="cat">Storage</div>
+          <h3>Grid Outages Are Getting Longer. Here's How Batteries Change the Math</h3>
+          <p>A data-driven look at backup economics when grid reliability dips below 97%.</p>
+          <div class="read-time">9 min read · April 3, 2026</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN GRID ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-header">
+      <h2>Latest Articles</h2>
+      <a class="see-all" href="#">All articles →</a>
+    </div>
+    <div class="grid-3">
+      <a class="post reveal" href="#"><div class="thumb"><img src="https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?q=80&w=3840&auto=format&fit=crop" alt="Solar panel close-up"></div><div class="body"><div class="pmeta"><b>Solar</b><span>June 2, 2026</span></div><h3>Bifacial Panels Explained: 15% More Yield From the Same Roof</h3><p>Why double-sided modules are becoming the default choice for 2026 installations.</p></div></a>
+      <a class="post reveal" href="#"><div class="thumb"><img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?q=80&w=3840&auto=format&fit=crop" alt="Wind turbine at dusk"></div><div class="body"><div class="pmeta"><b>Policy</b><span>May 21, 2026</span></div><h3>New Net-Metering Rules: What Homeowners Need to Know</h3><p>A plain-language guide to the latest tariff orders and how they change your payback math.</p></div></a>
+      <a class="post reveal" href="#"><div class="thumb"><img src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=3840&auto=format&fit=crop" alt="EV charging"></div><div class="body"><div class="pmeta"><b>EV</b><span>May 9, 2026</span></div><h3>Pairing Rooftop Solar With Your EV: The Real Numbers</h3><p>Charging from sunshine can cost under ₹1 per km. Here's the complete breakdown.</p></div></a>
+      <a class="post reveal" href="#"><div class="thumb"><img src="https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?q=80&w=3840&auto=format&fit=crop" alt="Battery storage hardware"></div><div class="body"><div class="pmeta"><b>Storage</b><span>April 28, 2026</span></div><h3>LFP vs NMC Batteries: Which Chemistry Belongs in Your Home?</h3><p>Safety, lifespan, cost per cycle — the trade-offs that actually matter for households.</p></div></a>
+      <a class="post reveal" href="#"><div class="thumb"><img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=3840&auto=format&fit=crop" alt="Forest river"></div><div class="body"><div class="pmeta"><b>Hydro</b><span>April 12, 2026</span></div><h3>Micro-Hydro for Farms: Power That Flows All Night</h3><p>How run-of-river systems complement solar to deliver true 24/7 clean power.</p></div></a>
+      <a class="post reveal" href="#"><div class="thumb"><img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=3840&auto=format&fit=crop" alt="Solar with mountains"></div><div class="body"><div class="pmeta"><b>Guides</b><span>March 30, 2026</span></div><h3>Reading Your Solar Dashboard: 7 Numbers Worth Checking Weekly</h3><p>Performance ratio, specific yield, clipping losses — your monitoring data, decoded.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INTERVIEW / Q&A ── -->
+<section>
+  <div class="container">
+    <div class="qa-strip reveal">
+      <div class="qa-img"><div class="qa-img-overlay"></div></div>
+      <div class="qa-content">
+        <div class="eyebrow-light">In Conversation</div>
+        <h2>"Storage is the missing piece India has been waiting for"</h2>
+        <blockquote>"When battery costs dropped below ₹15,000 per kWh, the business case for home storage in India stopped being a niche question and became a mainstream one."</blockquote>
+        <div class="qa-byline">
+          <div class="qa-avatar">DR</div>
+          <div>
+            <div class="qa-name">Dr. Rekha Sundaram</div>
+            <div class="qa-title">Director, MNRE Battery Mission · Chennai</div>
+          </div>
+        </div>
+        <p>In this wide-ranging conversation, she covers India's BESS procurement targets, why the home-storage market will outpace utility scale by 2028, and what policymakers consistently get wrong.</p>
+        <a href="#" class="btn btn-solar">Read the Interview →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── IN THE FIELD PHOTO ESSAY ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-header">
+      <h2>In the Field</h2>
+      <a class="see-all" href="#">View all photo essays →</a>
+    </div>
+    <div class="photo-essay">
+      <div class="pe-cell large reveal">
+        <img src="https://images.unsplash.com/photo-1566093097221-ac2335b09e70?q=80&w=2400&auto=format&fit=crop" alt="Aerial solar field">
+        <div class="pe-overlay">
+          <div class="pe-caption">Tirunelveli District, Tamil Nadu · March 2026</div>
+          <div class="pe-title">48 hours inside a 200 MW installation during commissioning week</div>
+        </div>
+      </div>
+      <div class="pe-cell reveal">
+        <img src="https://images.unsplash.com/photo-1548337138-e87d889cc369?q=80&w=1200&auto=format&fit=crop" alt="Worker on solar panel">
+        <div class="pe-overlay">
+          <div class="pe-title">The people who wire the sun</div>
+        </div>
+      </div>
+      <div class="pe-cell reveal">
+        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1200&auto=format&fit=crop" alt="Wind turbines sunset">
+        <div class="pe-overlay">
+          <div class="pe-title">Dawn to dusk at a Tamil Nadu wind farm</div>
+        </div>
+      </div>
+      <div class="pe-cell reveal">
+        <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?q=80&w=1200&auto=format&fit=crop" alt="Mountain hydro">
+        <div class="pe-overlay">
+          <div class="pe-title">The Nilgiris micro-hydro trail</div>
+        </div>
+      </div>
+      <div class="pe-cell reveal">
+        <img src="https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?q=80&w=1200&auto=format&fit=crop" alt="Control room screens">
+        <div class="pe-overlay">
+          <div class="pe-title">Inside the grid control room</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PODCAST + VIDEO ── -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <h2>Watch &amp; Listen</h2>
+      <a class="see-all" href="#">All episodes →</a>
+    </div>
+    <div class="media-row">
+      <a class="media-card reveal" href="#">
+        <div class="media-thumb">
+          <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1600&auto=format&fit=crop" alt="Podcast mic">
+          <div class="media-badge">🎙 Podcast · Ep. 47</div>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="media-card-body">
+          <div class="pmeta"><b>The Grid Cast</b><span>June 5, 2026 · 54 min</span></div>
+          <h3>Can India Reach 500 GW Renewables Before 2030? A Candid Debate</h3>
+          <p>Three energy analysts crunch the capacity addition numbers, the grid integration bottlenecks, and what government data quietly reveals.</p>
+        </div>
+      </a>
+      <a class="media-card reveal" href="#">
+        <div class="media-thumb">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=1600&auto=format&fit=crop" alt="Solar drone footage">
+          <div class="media-badge">▶ Video · 18 min</div>
+          <div class="play-btn">▶</div>
+        </div>
+        <div class="media-card-body">
+          <div class="pmeta"><b>Site Visit</b><span>May 28, 2026 · 18 min</span></div>
+          <h3>Drone Tour: How 310,000 Solar Modules Are Laid Out Across 600 Acres</h3>
+          <p>Our aerial footage of the Salem Solar Park, with engineers explaining tracker angles, cable routing, and inverter placement decisions.</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── LONG-FORM LIST ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 360px;gap:64px;align-items:start" class="sidebar-layout">
+      <div>
+        <div class="section-header">
+          <h2>More from the Desk</h2>
+        </div>
+        <a class="list-post reveal" href="#">
+          <div class="list-num">01</div>
+          <div class="list-post-body">
+            <div class="pmeta"><b>Solar</b><span>June 10, 2026 · 6 min</span></div>
+            <h3>Why Your Solar System Underperforms in Summer — and What to Do</h3>
+            <p>High cell temperatures cut output by up to 12%. Ventilation gaps, white backsheets, and module selection all matter more than installers admit.</p>
+          </div>
+        </a>
+        <a class="list-post reveal" href="#">
+          <div class="list-num">02</div>
+          <div class="list-post-body">
+            <div class="pmeta"><b>Finance</b><span>June 6, 2026 · 5 min</span></div>
+            <h3>Solar Loans vs. Capital Purchase: A 10-Year Cash Flow Comparison</h3>
+            <p>Zero-down financing looks attractive — until you factor in interest drag. We model both paths for a typical 5 kW residential system.</p>
+          </div>
+        </a>
+        <a class="list-post reveal" href="#">
+          <div class="list-num">03</div>
+          <div class="list-post-body">
+            <div class="pmeta"><b>Industry</b><span>June 1, 2026 · 7 min</span></div>
+            <h3>Indian Solar Module Manufacturing Is Finally Getting Serious</h3>
+            <p>Domestic capacity crossed 30 GW in 2025. We rank the ten largest cell and module makers and examine what's driving the quality gap with Chinese peers.</p>
+          </div>
+        </a>
+        <a class="list-post reveal" href="#">
+          <div class="list-num">04</div>
+          <div class="list-post-body">
+            <div class="pmeta"><b>Guides</b><span>May 25, 2026 · 9 min</span></div>
+            <h3>Understanding On-Grid, Off-Grid, and Hybrid Systems: Which Suits You?</h3>
+            <p>The three architectures compared on cost, reliability, and complexity — with a decision tree for homes, farms, and small businesses.</p>
+          </div>
+        </a>
+        <a class="list-post reveal" href="#">
+          <div class="list-num">05</div>
+          <div class="list-post-body">
+            <div class="pmeta"><b>EV</b><span>May 18, 2026 · 6 min</span></div>
+            <h3>V2G Is Coming to India: What Vehicle-to-Grid Means for Your Electricity Bill</h3>
+            <p>When your car can sell power back to the grid, the economics of owning both an EV and solar change dramatically.</p>
+          </div>
+        </a>
+        <a class="list-post reveal" href="#">
+          <div class="list-num">06</div>
+          <div class="list-post-body">
+            <div class="pmeta"><b>Storage</b><span>May 12, 2026 · 8 min</span></div>
+            <h3>How Long Does a Home Battery Actually Last? We Tested Three Brands</h3>
+            <p>Manufacturer claims vs. real-world cycle counts after 18 months of daily use in Tamil Nadu's climate. The results are instructive.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sidebar -->
+      <aside style="position:sticky;top:80px">
+        <!-- Popular tags -->
+        <div style="margin-bottom:36px">
+          <h4 style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.1rem;color:var(--pine,#1a3a2e);margin-bottom:14px">Popular Topics</h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Rooftop Solar</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Home Battery</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">PM Surya Ghar</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Net Metering</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">EV Charging</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">MNRE Subsidy</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Bifacial</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Off-Grid</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Tamil Nadu</a>
+            <a class="ftag" href="#" style="font-size:.75rem;padding:5px 14px">Hydro</a>
+          </div>
+        </div>
+
+        <!-- Most read -->
+        <div style="margin-bottom:36px">
+          <h4 style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.1rem;color:var(--pine,#1a3a2e);margin-bottom:14px">Most Read This Month</h4>
+          <div style="display:flex;flex-direction:column;gap:0">
+            <a href="#" style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e6eeea;text-decoration:none;color:inherit;transition:opacity .2s" onmouseover="this.style.opacity=.7" onmouseout="this.style.opacity=1">
+              <span style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.6rem;color:#d5e5dc;flex-shrink:0;line-height:1">1</span>
+              <div>
+                <div style="font-size:.75rem;color:var(--flame,#e8521a);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Solar</div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--pine,#1a3a2e);line-height:1.35">Bifacial Panels: 15% More Yield From the Same Roof</div>
+              </div>
+            </a>
+            <a href="#" style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e6eeea;text-decoration:none;color:inherit;transition:opacity .2s" onmouseover="this.style.opacity=.7" onmouseout="this.style.opacity=1">
+              <span style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.6rem;color:#d5e5dc;flex-shrink:0;line-height:1">2</span>
+              <div>
+                <div style="font-size:.75rem;color:var(--flame,#e8521a);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Finance</div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--pine,#1a3a2e);line-height:1.35">Solar Loans vs. Capital Purchase: 10-Year Cash Flow</div>
+              </div>
+            </a>
+            <a href="#" style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e6eeea;text-decoration:none;color:inherit;transition:opacity .2s" onmouseover="this.style.opacity=.7" onmouseout="this.style.opacity=1">
+              <span style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.6rem;color:#d5e5dc;flex-shrink:0;line-height:1">3</span>
+              <div>
+                <div style="font-size:.75rem;color:var(--flame,#e8521a);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Policy</div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--pine,#1a3a2e);line-height:1.35">New Net-Metering Rules: What Homeowners Need to Know</div>
+              </div>
+            </a>
+            <a href="#" style="display:flex;gap:12px;padding:14px 0;text-decoration:none;color:inherit;transition:opacity .2s" onmouseover="this.style.opacity=.7" onmouseout="this.style.opacity=1">
+              <span style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.6rem;color:#d5e5dc;flex-shrink:0;line-height:1">4</span>
+              <div>
+                <div style="font-size:.75rem;color:var(--flame,#e8521a);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Guides</div>
+                <div style="font-size:.88rem;font-weight:600;color:var(--pine,#1a3a2e);line-height:1.35">The Complete First-Timer's Checklist for Going Solar in 2026</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Inline newsletter CTA -->
+        <div style="background:var(--pine,#1a3a2e);border-radius:16px;padding:28px 24px;color:#fff">
+          <div style="font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--flame,#e8521a);margin-bottom:10px">Energy Desk Weekly</div>
+          <h4 style="font-family:var(--font-d,'DM Serif Display',serif);font-size:1.15rem;color:#fff;margin-bottom:10px;line-height:1.3">One email. Tariff changes, real installs, honest numbers.</h4>
+          <p style="font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:18px;line-height:1.5">Delivered every Monday. No ads. Unsubscribe anytime.</p>
+          <form data-demo-form style="display:flex;flex-direction:column;gap:8px">
+            <input type="email" placeholder="your@email.com" required style="padding:10px 14px;border-radius:8px;border:none;font-size:.88rem;background:rgba(255,255,255,.1);color:#fff;outline:none">
+            <button type="submit" style="padding:10px;border-radius:8px;background:var(--flame,#e8521a);border:none;color:#fff;font-weight:700;font-size:.88rem;cursor:pointer">Subscribe →</button>
+          </form>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ── TOOLS & CALCULATORS ── -->
+<section style="background: linear-gradient(135deg,#f0f7f3,#e6f2ec)">
+  <div class="container">
+    <div class="section-header">
+      <h2>Free Tools & Calculators</h2>
+      <a class="see-all" href="#">All tools →</a>
+    </div>
+    <div class="tool-cards">
+      <a class="tool-card reveal" href="#">
+        <div class="tool-icon">☀️</div>
+        <h4>Solar Savings Estimator</h4>
+        <p>Enter your monthly bill, roof size, and location. Get a 25-year savings projection in under 60 seconds.</p>
+        <div class="tool-cta">Try the calculator →</div>
+      </a>
+      <a class="tool-card reveal" href="#">
+        <div class="tool-icon">🔋</div>
+        <h4>Battery Sizing Guide</h4>
+        <p>How many kWh of storage do you actually need? Answer five questions and we'll size a backup system for your usage pattern.</p>
+        <div class="tool-cta">Size your battery →</div>
+      </a>
+      <a class="tool-card reveal" href="#">
+        <div class="tool-icon">⚡</div>
+        <h4>Unit Cost Comparator</h4>
+        <p>Compare your current DISCOM tariff against solar + storage on a per-unit basis, updated for 2026 costs.</p>
+        <div class="tool-cta">Compare costs →</div>
+      </a>
+      <a class="tool-card reveal" href="#">
+        <div class="tool-icon">🚗</div>
+        <h4>EV Charging Cost Calculator</h4>
+        <p>Grid vs. rooftop solar vs. off-peak DISCOM — find your true per-km charging cost for any EV model.</p>
+        <div class="tool-cta">Calculate now →</div>
+      </a>
+      <a class="tool-card reveal" href="#">
+        <div class="tool-icon">📋</div>
+        <h4>Subsidy Eligibility Checker</h4>
+        <p>State-by-state PM Surya Ghar, MNRE, and utility-level subsidies. Find out what you qualify for in your district.</p>
+        <div class="tool-cta">Check eligibility →</div>
+      </a>
+      <a class="tool-card reveal" href="#">
+        <div class="tool-icon">📈</div>
+        <h4>Payback Period Planner</h4>
+        <p>Model the impact of tariff escalation, degradation, and loan interest on your system's break-even timeline.</p>
+        <div class="tool-cta">Plan your payback →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── AUTHOR SPOTLIGHT ── -->
+<section style="background:#fff">
+  <div class="container">
+    <div class="section-header">
+      <h2>Meet the Writers</h2>
+      <a class="see-all" href="#">Full team →</a>
+    </div>
+    <div class="author-cards">
+      <div class="author-card reveal">
+        <div class="author-avatar" style="background:#1a3a2e">AS</div>
+        <h4>Aravind Suresh</h4>
+        <div class="role">Senior Energy Analyst</div>
+        <p>Former MNRE researcher. Covers solar policy, grid economics, and DISCOM reform with 11 years of field experience.</p>
+        <div class="post-count">48 articles published</div>
+      </div>
+      <div class="author-card reveal">
+        <div class="author-avatar" style="background:#e8521a">PM</div>
+        <h4>Priya Mohan</h4>
+        <div class="role">Storage & EV Correspondent</div>
+        <p>Battery chemist turned writer. Breaks down cell technology, home storage economics, and vehicle-to-grid integration.</p>
+        <div class="post-count">31 articles published</div>
+      </div>
+      <div class="author-card reveal">
+        <div class="author-avatar" style="background:#2e7d52">KR</div>
+        <h4>Karthik Rajan</h4>
+        <div class="role">Field Reporter</div>
+        <p>Spends most months on project sites. Documents real installations, commissioning challenges, and O&amp;M realities.</p>
+        <div class="post-count">27 articles published</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER BAND ── -->
+<section>
+  <div class="container">
+    <div class="band reveal">
+      <span class="eyebrow">Stay Informed</span>
+      <h2 data-split>One email a month. Tariff changes, tech reviews, real savings data.</h2>
+      <form class="news-form" data-demo-form style="max-width:460px"><input type="email" placeholder="Your email address" required><button type="submit">Subscribe</button><div class="alert" style="display:none"></div></form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <img src="logo-stackly.png" alt="STACKLY" class="nav-logo-img" style="margin-bottom:18px">
+      <p style="font-size:.92rem;max-width:300px">Designing, building, and maintaining renewable-energy systems since 2008.</p>
+      <div class="socials" style="margin-top:22px">
+        <a href="./error.html" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="X">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+        </a>
+        <a href="./error.html" aria-label="YouTube">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#000" style="fill: var(--yt-play-color, #000)"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div><h4>Quick Links</h4><a href="index.html">Home</a><a href="about.html">About Us</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="blog.html">Blog</a></div>
+    <div><h4>Services</h4><a href="services.html">Solar Panel Installation</a><a href="services.html">Wind Energy Systems</a><a href="services.html">Battery Storage & Backup</a><a href="services.html">EV Charging</a><a href="./error.html">FAQs</a></div>
+    <div><h4>Newsletter</h4><form class="news-form" data-demo-form><input type="email" placeholder="Your email" required><button type="submit">Join</button><div class="alert" style="display:none"></div></form></div>
+  </div>
+  <div class="container foot-bottom">
+    <span>© 2026 Renewable Power · STACKLY. All rights reserved.</span>
+    <span><a href="./error.html">Privacy Policy</a></span><a href="./error.html">Terms of Service</a></span>
+  </div>
+</footer>
+
+<button class="to-top" aria-label="Back to top">↑</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
+<script>
+  /* Filter tab switching — scoped strictly to the filter bar */
+  const filterBar = document.querySelector('.filter-bar');
+  if (filterBar) {
+    const filterTags = filterBar.querySelectorAll('.ftag');
+    filterTags.forEach(tag => {
+      tag.addEventListener('click', e => {
+        e.preventDefault();
+        filterTags.forEach(t => t.classList.remove('active'));
+        tag.classList.add('active');
+      });
+    });
+  }
+
+  /* Sidebar responsive collapse */
+  function handleSidebar() {
+    const layout = document.querySelector('.sidebar-layout');
+    if (!layout) return;
+    if (window.innerWidth < 960) {
+      layout.style.gridTemplateColumns = '1fr';
+    } else {
+      layout.style.gridTemplateColumns = '1fr 360px';
+    }
+  }
+  handleSidebar();
+  window.addEventListener('resize', handleSidebar);
+</script>
+</body>
+</html>
