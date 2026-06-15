@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('nav-open', navLinks.classList.contains('open'));
     });
     navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+    // Tap the dark overlay (outside the panel) to close
     document.addEventListener('click', e => {
       if (document.body.classList.contains('nav-open') &&
           !navLinks.contains(e.target) && !burger.contains(e.target)) closeNav();
@@ -52,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    /* Split text into animated characters (word-wrapped to avoid breaks) */
     document.querySelectorAll('[data-split]').forEach(el => {
       const words = el.textContent.trim().split(/\s+/);
       el.innerHTML = words.map(w =>
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    /* Generic fade-up reveals */
     document.querySelectorAll('.reveal').forEach((el, i) => {
       gsap.fromTo(el, { y: 50, opacity: 0 }, {
         y: 0, opacity: 1,
@@ -79,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    /* Hero entrance sequence */
     const heroLead = document.querySelector('.hero p.lead');
     if (heroLead && !reduce) {
       gsap.from([heroLead, '.hero-actions', '.hero-stats'], {
@@ -154,7 +158,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ============================================================
-     AUTH — modelled on the reference portal
+     LOGIN (demo authentication — no backend)
+     admin@renewable.com / admin123  → admin dashboard
+     user@renewable.com  / user123   → user dashboard
+     ============================================================ */
+  /* ============================================================
+     AUTH — modelled on the reference portal:
+     · Sign-up accounts stored in localStorage ('rp_accounts')
+     · Current user stored in sessionStorage ('rp_current_user')
+     · Display name = registered account name, else email prefix
      ============================================================ */
   const safeGet = (store, key) => { try { return window[store].getItem(key); } catch (e) { return null; } };
   const safeSet = (store, key, val) => { try { window[store].setItem(key, val); } catch (e) { /* blocked */ } };
@@ -164,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const readSession = () => {
     try { const s = safeGet('sessionStorage', 'rp_current_user'); if (s) return JSON.parse(s); } catch (e) { /* blocked */ }
-    const q = new URLSearchParams(location.search);
+    const q = new URLSearchParams(location.search);                 // URL fallback
     if (q.get('name')) return { name: q.get('name'), role: q.get('role') || 'user', email: q.get('email') || '' };
     return null;
   };
@@ -176,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const prettify = email => email.split('@')[0].replace(/[._-]+/g, ' ')
     .split(' ').filter(Boolean).map(w => w[0].toUpperCase() + w.slice(1)).join(' ');
 
+  /* Mode switch (Sign In / Create Account) — global for inline onclick */
   window.switchMode = mode => {
     const si = document.getElementById('loginForm'), su = document.getElementById('signupForm');
     const ti = document.getElementById('toggle-signin'), tu = document.getElementById('toggle-signup');
@@ -183,6 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const isIn = mode === 'signin';
     si.classList.toggle('active', isIn); su.classList.toggle('active', !isIn);
     ti.classList.toggle('active', isIn); tu.classList.toggle('active', !isIn);
+    // Swap heading + subtitle (reference style)
     const t = document.getElementById('authTitle'), s = document.getElementById('authSub');
     if (t) t.textContent = isIn ? 'Welcome back' : 'Create account';
     if (s) s.textContent = isIn ? 'Sign in to your STACKLY account'
@@ -204,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.auth-form-panel input').forEach(inp =>
       inp.addEventListener('input', () => inp.classList.remove('error')));
 
+    /* ── PASSWORD EYE TOGGLE ── */
     document.querySelectorAll('.pw-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
         const input = document.getElementById(btn.dataset.target);
@@ -215,6 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    /* ── SIGN IN ── */
     loginForm.addEventListener('submit', e => {
       e.preventDefault();
       const email = document.getElementById('signin-email').value.trim().toLowerCase();
@@ -227,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!valid) return;
 
       const btn = document.getElementById('btn-signin');
-      btn.textContent = 'Sign in…'; btn.disabled = true;
+      btn.textContent = 'Signing in…'; btn.disabled = true;
       setTimeout(() => {
         const stored = accounts[email];
         const name = stored ? stored.name : prettify(email);
@@ -238,9 +254,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 1000);
     });
 
+    /* ── CONTINUE WITH GOOGLE (demo — replace with real OAuth in production) ── */
     window.googleSignIn = () => {
       const input = prompt('Continue with Google\n\nEnter your Google email:', 'yourname@gmail.com');
-      if (input === null) return;
+      if (input === null) return;                                   // cancelled
       const email = input.trim().toLowerCase();
       if (!emailRx.test(email)) { alert('Please enter a valid Google email address.'); return; }
       const stored = accounts[email];
@@ -251,6 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
         + '?name=' + encodeURIComponent(name) + '&role=' + selectedRole + '&email=' + encodeURIComponent(email);
     };
 
+    /* ── MODAL HELPERS ── */
     window.openModal = id => {
       const m = document.getElementById(id);
       if (!m) return;
@@ -268,10 +286,12 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       else { m.classList.remove('open'); document.body.style.overflow = ''; }
     };
+    // Close modals on Escape key
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') document.querySelectorAll('.auth-modal.open').forEach(m => closeModal(m.id));
     });
 
+    /* ── FORGOT PASSWORD FORM ── */
     const forgotForm = document.getElementById('forgotForm');
     if (forgotForm) {
       forgotForm.addEventListener('submit', e => {
@@ -295,6 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
+    /* ── SIGN UP (first + last name, email, phone, password) ── */
     const signupForm = document.getElementById('signupForm');
     signupForm.addEventListener('submit', e => {
       e.preventDefault();
@@ -332,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Dashboard personalization ---------- */
+  /* ---------- Dashboard personalization (reference pattern) ---------- */
   const dashRoot = document.querySelector('.dash');
   if (dashRoot) {
     const u = readSession();
@@ -350,56 +371,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.querySelectorAll('a[href^="login.html"]').forEach(a =>
       a.addEventListener('click', clearSession));
-  }
-
-  /* ============================================================
-     SIDEBAR — scroll-to-top button
-     Shows after scrolling 120px down inside the sidebar.
-     Smoothly scrolls back to the top of the sidebar on click.
-     ============================================================ */
-  const sidebar = document.querySelector('.sidebar');
-  if (sidebar) {
-    /* Create the scroll-to-top button and inject it before the Logout link */
-    const scrollBtn = document.createElement('button');
-    scrollBtn.className = 'sidebar-scroll-top';
-    scrollBtn.setAttribute('aria-label', 'Scroll to top of menu');
-    scrollBtn.innerHTML = `
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="18 15 12 9 6 15"/>
-      </svg>
-      Back to top`;
-
-    /* Insert just before the last link (Logout) so it sits near the bottom naturally */
-    const logoutLink = sidebar.querySelector('a[href="login.html"]');
-    if (logoutLink) {
-      sidebar.insertBefore(scrollBtn, logoutLink);
-    } else {
-      sidebar.appendChild(scrollBtn);
-    }
-
-    /* Show/hide based on sidebar scroll position */
-    const THRESHOLD = 120;
-    sidebar.addEventListener('scroll', () => {
-      scrollBtn.classList.toggle('visible', sidebar.scrollTop > THRESHOLD);
-    }, { passive: true });
-
-    /* Click → smooth scroll to top of sidebar */
-    scrollBtn.addEventListener('click', () => {
-      sidebar.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    /* ── Mobile sidebar open/close ── */
-    const dburger = document.querySelector('.dash-burger');
-    if (dburger) {
-      const closeSide = () => sidebar.classList.remove('open');
-      dburger.addEventListener('click', e => { e.stopPropagation(); sidebar.classList.add('open'); });
-      const xBtn = sidebar.querySelector('.sidebar-close');
-      if (xBtn) xBtn.addEventListener('click', closeSide);
-      sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSide));
-      document.addEventListener('click', e => {
-        if (sidebar.classList.contains('open') && !sidebar.contains(e.target)) closeSide();
-      });
-    }
   }
 
   /* ---------- FAQ accordion ---------- */
@@ -424,12 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (calcBill) {
     const fmt = n => n.toLocaleString('en-IN');
     const update = () => {
-      const bill = +calcBill.value;
-      const tariff = 8;
-      const usage = bill / tariff;
-      const sizeKw = usage / 120;
-      const monthlySave = bill * 0.9;
-      const cost = sizeKw * 55000;
+      const bill = +calcBill.value;                       // ₹ / month
+      const tariff = 8;                                   // ₹ per kWh
+      const usage = bill / tariff;                        // kWh / month
+      const sizeKw = usage / 120;                         // 120 kWh per kW per month
+      const monthlySave = bill * 0.9;                     // 90% offset
+      const cost = sizeKw * 55000;                        // ₹55k per kW installed
       const paybackYrs = cost / (monthlySave * 12);
       const lifeSaveLakh = (monthlySave * 12 * 25 - cost) / 100000;
       document.getElementById('calcBillVal').textContent = fmt(bill);
@@ -443,6 +414,27 @@ document.addEventListener('DOMContentLoaded', () => {
     update();
   }
 
+  /* ---------- Dashboard sidebar (mobile) ---------- */
+  const dburger = document.querySelector('.dash-burger');
+  const sidebar = document.querySelector('.sidebar');
+  if (dburger && sidebar) {
+    const closeSide = () => {
+      sidebar.classList.remove('open');
+      document.body.classList.remove('dash-nav-open');
+    };
+    dburger.addEventListener('click', e => {
+      e.stopPropagation();
+      sidebar.classList.add('open');
+      document.body.classList.add('dash-nav-open');
+    });
+    const xBtn = sidebar.querySelector('.sidebar-close');
+    if (xBtn) xBtn.addEventListener('click', closeSide);
+    sidebar.querySelectorAll('a').forEach(a => a.addEventListener('click', closeSide));
+    document.addEventListener('click', e => {
+      if (sidebar.classList.contains('open') && !sidebar.contains(e.target) && e.target !== dburger) closeSide();
+    });
+  }
+
   /* ---------- Dashboard delete-row demo ---------- */
   document.querySelectorAll('.mini-btn.del').forEach(b =>
     b.addEventListener('click', () => {
@@ -450,5 +442,4 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.gsap) gsap.to(row, { opacity: 0, x: 40, duration: .4, onComplete: () => row.remove() });
       else row.remove();
     }));
-
 });
